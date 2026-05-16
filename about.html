@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ameritore Homes – About Us</title>
+<link rel="icon" type="image/png" href="./assets/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&family=Barlow+Condensed:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:          #faf7f2;
+  --bg-card:     #ffffff;
+  --bg-card2:    #f5f0e8;
+  --bg-nav:      #fffdf9;
+  --accent:      #b8732a;
+  --accent-lt:   #d4934a;
+  --accent-deep: #8a531a;
+  --text-dark:   #1c1208;
+  --text-body:   #3d2f1a;
+  --text-muted:  #7a6548;
+  --text-subtle: #a8956e;
+  --border:      rgba(184,115,42,0.14);
+  --border-lt:   rgba(184,115,42,0.28);
+  --shadow:      0 2px 24px rgba(184,115,42,0.09);
+  --shadow-card: 0 4px 32px rgba(184,115,42,0.10);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Barlow', sans-serif;
+  background: var(--bg);
+  color: var(--text-dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ═══════════════════════════════
+   TOP NAVBAR
+═══════════════════════════════ */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: 72px;
+  background: rgba(250,247,242,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--gold-border);
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  z-index: 200;
+  box-shadow: 0 2px 24px rgba(184,134,42,0.08);
+}
+
+/* Logo */
+.nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
+.nav-logo:hover .nav-logo-img { filter: drop-shadow(0 0 14px rgba(184,134,42,0.55)); }
+.nav-logo-img { width: 86px; height: 56px; border-radius: 8px; object-fit: cover; filter: drop-shadow(0 0 8px rgba(184,134,42,0.32)); transition: filter 0.3s; }
+.nav-logo-text .name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px; font-weight: 700;
+  letter-spacing: 2.5px; color: var(--ink);
+  display: block;
+}
+.nav-logo-text .sub {
+  font-size: 8px; letter-spacing: 3.5px;
+  color: var(--ink-muted); text-transform: uppercase; display: block;
+}
+
+/* Nav links */
+.nav-links {
+  display: flex; align-items: center; gap: 4px;
+  list-style: none;
+}
+.nav-links a {
+  display: flex; align-items: center; gap: 6px;
+  padding: 8px 14px;
+  border-radius: 7px;
+  text-decoration: none;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--ink-soft);
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+.nav-links a svg { width: 13px; height: 13px; flex-shrink: 0; }
+.nav-links a:hover {
+  background: var(--gold-dim);
+  color: var(--gold);
+  border-color: var(--gold-border);
+}
+.nav-links a.active {
+  background: linear-gradient(135deg, rgba(184,134,42,0.18), rgba(212,169,74,0.1));
+  color: var(--gold);
+  border-color: var(--gold-border);
+  box-shadow: 0 0 12px rgba(184,134,42,0.12);
+}
+
+/* Nav right: socials + hamburger */
+.nav-right {
+  display: flex; align-items: center; gap: 8px;
+}
+.soc-btn {
+  width: 34px; height: 34px;
+  background: transparent;
+  border: 1px solid var(--gold-border);
+  border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none; color: var(--ink-muted);
+  transition: all 0.2s; cursor: pointer;
+}
+.soc-btn svg { width: 14px; height: 14px; }
+.soc-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: var(--gold-dim);
+  box-shadow: 0 0 10px var(--shadow-gold);
+}
+
+.ham-btn {
+  display: none;
+  width: 36px; height: 36px;
+  background: var(--gold-dim);
+  border: 1px solid var(--gold-border);
+  border-radius: 7px;
+  align-items: center; justify-content: center;
+  cursor: pointer; color: var(--gold);
+  transition: all 0.2s;
+}
+.ham-btn:hover { background: rgba(184,134,42,0.25); }
+
+/* ═══════════════════════════════
+   MOBILE NAV OVERLAY
+═══════════════════════════════ */
+#mobile-nav { display: none; position: fixed; inset: 0; z-index: 999; }
+#mobile-nav.open { display: flex; }
+.mob-overlay { position: absolute; inset: 0; background: rgba(26,20,8,0.6); backdrop-filter: blur(6px); }
+.mob-panel {
+  position: absolute; top: 0; right: 0;
+  width: min(300px, 88vw); height: 100vh;
+  background: var(--cream);
+  border-left: 1px solid var(--gold-border);
+  box-shadow: -8px 0 40px rgba(184,134,42,0.15);
+  display: flex; flex-direction: column;
+  padding: 28px 22px 32px;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.34,1.12,0.64,1);
+}
+#mobile-nav.open .mob-panel { transform: translateX(0); }
+.mob-close {
+  align-self: flex-end; width: 32px; height: 32px;
+  background: var(--gold-dim); border: 1px solid var(--gold-border);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--gold); font-size: 14px;
+  transition: all 0.2s; margin-bottom: 28px;
+}
+.mob-close:hover { background: rgba(184,134,42,0.3); }
+.mob-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 32px; }
+.mob-logo img { width: 36px; height: 36px; border-radius: 5px; object-fit: cover; }
+.mob-logo-text .name { font-family: 'Barlow Condensed',sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 2px; color: var(--ink); display: block; }
+.mob-logo-text .sub { font-size: 8px; letter-spacing: 3px; color: var(--ink-muted); }
+.mob-nav { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+.mob-nav-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 14px; border-radius: 8px;
+  text-decoration: none; color: var(--ink-soft);
+  font-size: 12px; font-weight: 600; letter-spacing: 1.5px;
+  text-transform: uppercase; transition: all 0.2s;
+  border: 1px solid transparent;
+}
+.mob-nav-item:hover { background: var(--gold-dim); color: var(--gold); border-color: var(--gold-border); }
+.mob-nav-item.active { background: var(--gold-dim); color: var(--gold); border-color: var(--gold-border); }
+.mob-nav-item svg { width: 15px; height: 15px; flex-shrink: 0; opacity: 0.7; }
+.mob-nav-item.active svg { opacity: 1; }
+.mob-socials { display: flex; gap: 8px; padding-top: 20px; border-top: 1px solid var(--gold-border); margin-top: 16px; }
+.mob-soc-btn { width: 36px; height: 36px; background: var(--gold-dim); border: 1px solid var(--gold-border); border-radius: 7px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--gold); transition: all 0.2s; }
+.mob-soc-btn:hover { background: rgba(184,134,42,0.3); }
+.mob-soc-btn svg { width: 15px; height: 15px; }
+
+
+/* ══════════════════════════════════
+   HERO
+══════════════════════════════════ */
+.hero {
+  position: relative;
+  height: 360px; overflow: hidden;
+  margin: 20px 24px 0;
+  border-radius: 14px;
+  border: 1px solid var(--border-lt);
+  box-shadow: var(--shadow-card);
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to right,
+      rgba(250,247,242,0.97) 32%,
+      rgba(250,247,242,0.80) 55%,
+      rgba(250,247,242,0.18) 100%),
+    url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1400&q=85')
+      center/cover no-repeat;
+  border-radius: 14px;
+}
+
+/* Warm golden overlay on right */
+.hero-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 80% 50%,
+    rgba(184,115,42,0.12) 0%, transparent 60%);
+  border-radius: 14px;
+}
+
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 68px 0 0 56px;
+  max-width: 580px;
+}
+
+.hero-eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+  color: var(--accent); text-transform: uppercase; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 8px;
+  animation: fadeUp 0.5s ease both;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block; width: 28px; height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-lt));
+  border-radius: 1px;
+}
+
+.hero-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 86px; font-weight: 800;
+  line-height: 0.92; letter-spacing: -1px;
+  text-transform: uppercase; margin-bottom: 22px;
+  animation: fadeUp 0.5s ease 0.1s both;
+}
+
+.hero-title .line1 { display: block; color: var(--text-dark); }
+.hero-title .line2 {
+  display: block;
+  background: linear-gradient(135deg, var(--accent-deep), var(--accent-lt));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: 14px; font-weight: 400; color: var(--text-muted);
+  line-height: 1.7; letter-spacing: 0.2px; max-width: 400px;
+  animation: fadeUp 0.5s ease 0.2s both;
+}
+
+/* ══════════════════════════════════
+   CONTENT GRID
+══════════════════════════════════ */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  padding: 40px 24px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── LEFT COL ── */
+.col-left { padding-right: 36px; border-right: 1px solid var(--border); }
+
+.section-label {
+  font-size: 9.5px; font-weight: 800; letter-spacing: 3px;
+  color: var(--accent); text-transform: uppercase;
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.section-label::before {
+  content: '';
+  width: 18px; height: 2px;
+  background: var(--accent-lt);
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+
+.legacy-text {
+  font-size: 13px; font-weight: 400; color: var(--text-muted);
+  line-height: 1.75; margin-bottom: 28px;
+}
+
+.timeline-imgs {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+  margin-top: 4px;
+}
+
+.timeline-item { cursor: pointer; }
+
+.timeline-img-wrap {
+  position: relative; overflow: hidden; border-radius: 8px;
+  height: 96px; margin-bottom: 8px;
+  border: 1px solid var(--border);
+}
+
+.timeline-img-wrap img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: brightness(0.9) saturate(0.9); transition: all 0.3s;
+}
+
+.timeline-item:hover .timeline-img-wrap img { filter: brightness(1) saturate(1.1); transform: scale(1.05); }
+
+.timeline-item-label {
+  font-size: 9px; font-weight: 700; letter-spacing: 1.5px;
+  color: var(--text-subtle); text-transform: uppercase; padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.timeline-item.active .timeline-item-label { color: var(--accent); border-color: var(--accent); }
+
+/* ── CENTER COL ── */
+.col-center { padding: 0 32px; border-right: 1px solid var(--border); }
+
+.values-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+}
+
+.value-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 16px 16px;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.value-card:hover {
+  border-color: var(--accent-lt);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(184,115,42,0.14);
+}
+
+.value-icon {
+  width: 34px; height: 34px; color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.value-title {
+  font-size: 10.5px; font-weight: 800; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--text-dark);
+  margin-bottom: 6px; line-height: 1.35;
+}
+
+.value-desc {
+  font-size: 11.5px; font-weight: 400; color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ── RIGHT COL ── */
+.col-right { padding-left: 32px; }
+
+.team-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 28px;
+}
+
+.team-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px; padding: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+.team-card:hover {
+  border-color: var(--accent-lt);
+  box-shadow: 0 6px 24px rgba(184,115,42,0.12);
+}
+
+.team-avatar {
+  width: 52px; height: 52px; border-radius: 6px; object-fit: cover;
+  margin-bottom: 10px;
+  border: 2px solid var(--border-lt);
+}
+
+.team-name {
+  font-size: 11.5px; font-weight: 700; color: var(--text-dark);
+  margin-bottom: 3px; line-height: 1.35;
+}
+
+.team-name span { font-weight: 400; color: var(--text-muted); }
+
+.bio-btn {
+  display: inline-flex; align-items: center;
+  background: var(--bg-card2);
+  border: 1px solid var(--border-lt); border-radius: 4px;
+  padding: 3px 10px; font-size: 10px; font-weight: 700;
+  letter-spacing: 1.2px; color: var(--text-subtle); cursor: pointer;
+  transition: all 0.2s; text-transform: uppercase; margin-top: 8px;
+}
+.bio-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(184,115,42,0.07); }
+
+.awards-label {
+  font-size: 9.5px; font-weight: 800; letter-spacing: 3px;
+  color: var(--accent); text-transform: uppercase; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.awards-label::before {
+  content: '';
+  width: 18px; height: 2px;
+  background: var(--accent-lt);
+  border-radius: 1px; flex-shrink: 0;
+}
+
+.awards-row { display: flex; gap: 14px; align-items: flex-start; flex-wrap: wrap; }
+
+.award-item { text-align: center; }
+
+.award-badge {
+  width: 62px; height: 62px; border-radius: 50%;
+  border: 2px solid var(--border-lt);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 8px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px; font-weight: 800;
+  color: var(--accent-deep);
+  background: linear-gradient(135deg, #fffbf4, #f5ead8);
+  box-shadow: 0 4px 16px rgba(184,115,42,0.15);
+}
+
+.award-badge.leed {
+  font-size: 11px; font-weight: 900; letter-spacing: 1px;
+  flex-direction: column; gap: 1px;
+}
+
+.award-badge .leed-sub { font-size: 6.5px; letter-spacing: 2px; color: var(--text-muted); }
+
+.award-name {
+  font-size: 9.5px; font-weight: 500; color: var(--text-muted);
+  line-height: 1.4; max-width: 72px;
+}
+
+/* ══════════════════════════════════
+   BOTTOM STRIP
+══════════════════════════════════ */
+.bottom-strip {
+  display: grid;
+  grid-template-columns: 260px 1fr auto;
+  align-items: center;
+  border-top: 1px solid var(--border);
+  padding: 32px 0;
+  margin-top: 0;
+}
+
+.strip-visual {
+  padding: 0 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.strip-visual-img {
+  width: 200px; height: 130px; object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid var(--border-lt);
+  box-shadow: var(--shadow-card);
+}
+
+.strip-body { padding-right: 32px; }
+
+.strip-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px; font-weight: 800; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--text-dark); margin-bottom: 8px;
+}
+
+.strip-desc {
+  font-size: 12px; color: var(--text-muted); line-height: 1.65; max-width: 280px;
+}
+
+.strip-features {
+  display: flex;
+  border-left: 1px solid var(--border);
+}
+
+.strip-feat {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 16px 22px; border-right: 1px solid var(--border);
+  text-align: center; font-size: 9px; font-weight: 700;
+  letter-spacing: 1.5px; color: var(--text-muted); text-transform: uppercase;
+  transition: background 0.2s, color 0.2s; cursor: pointer;
+}
+.strip-feat:hover { background: rgba(184,115,42,0.05); color: var(--accent); }
+
+.strip-feat svg { width: 26px; height: 26px; color: var(--accent); opacity: 0.8; }
+
+.strip-cta { padding: 0 40px 0 28px; text-align: right; }
+
+.strip-cta-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px; font-weight: 800; text-transform: uppercase;
+  color: var(--text-dark); line-height: 1.2; margin-bottom: 4px;
+}
+
+.strip-cta-sub {
+  font-size: 10px; color: var(--text-muted); margin-bottom: 14px; letter-spacing: 0.5px;
+}
+
+/* ══════════════════════════════════
+   FOOTER
+══════════════════════════════════ */
+.site-footer {
+  background: #f0e8d8;
+  border-top: 1px solid var(--border-lt);
+  padding: 18px 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; flex-wrap: wrap;
+}
+
+.footer-logo-img {
+  width: 28px; height: 28px; border-radius: 4px; object-fit: cover;
+}
+
+.footer-copy {
+  font-size: 11px; font-weight: 500; color: var(--text-subtle); letter-spacing: 0.4px;
+}
+.footer-copy strong { color: var(--text-muted); font-weight: 700; }
+
+.footer-center {
+  font-size: 10.5px; color: var(--text-subtle); letter-spacing: 0.3px;
+}
+.footer-center a { color: var(--accent); text-decoration: none; font-weight: 600; }
+.footer-center a:hover { color: var(--accent-deep); }
+
+.footer-right { display: flex; align-items: center; gap: 14px; }
+
+.footer-link {
+  font-size: 10.5px; font-weight: 600; color: var(--text-subtle);
+  text-decoration: none; letter-spacing: 0.5px; text-transform: uppercase;
+  transition: color 0.2s;
+}
+.footer-link:hover { color: var(--accent); }
+
+.footer-divider { width: 1px; height: 12px; background: var(--border); }
+
+/* ══════════════════════════════════
+   SCROLL TOP
+══════════════════════════════════ */
+#scroll-top {
+  position: fixed; bottom: 28px; right: 28px;
+  width: 42px; height: 42px;
+  background: rgba(250,247,242,0.92);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid var(--border-lt);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; z-index: 500;
+  color: var(--accent);
+  opacity: 0; pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.3s, transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 14px rgba(184,115,42,0.15);
+}
+#scroll-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+#scroll-top:hover { box-shadow: 0 4px 20px rgba(184,115,42,0.35); background: #fff; }
+
+/* ══════════════════════════════════
+   MOBILE NAV OVERLAY
+══════════════════════════════════ */
+#mobile-nav { display: none; position: fixed; inset: 0; z-index: 999; }
+#mobile-nav.open { display: flex; }
+
+.mob-overlay {
+  position: absolute; inset: 0;
+  background: rgba(28,18,8,0.5);
+  backdrop-filter: blur(6px);
+}
+
+.mob-panel {
+  position: absolute; top: 0; right: 0;
+  width: min(300px, 85vw); height: 100vh;
+  background: linear-gradient(160deg, #fffdf9 0%, #f9f3e8 100%);
+  border-left: 1px solid var(--border-lt);
+  box-shadow: -8px 0 40px rgba(184,115,42,0.15);
+  display: flex; flex-direction: column;
+  padding: 24px 20px 28px;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.34,1.12,0.64,1);
+}
+#mobile-nav.open .mob-panel { transform: translateX(0); }
+
+.mob-close {
+  align-self: flex-end;
+  width: 30px; height: 30px;
+  background: var(--bg-card2);
+  border: 1px solid var(--border-lt);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--text-muted); font-size: 14px;
+  transition: all 0.2s; margin-bottom: 28px;
+}
+.mob-close:hover { border-color: var(--accent); color: var(--accent); }
+
+.mob-logo {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 32px; text-decoration: none;
+}
+.mob-logo-text .name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px; font-weight: 800; letter-spacing: 2px; color: var(--text-dark); display: block;
+}
+.mob-logo-text .sub { font-size: 8px; letter-spacing: 3px; color: var(--accent); }
+
+.mob-nav { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+
+.mob-nav-item {
+  display: flex; align-items: center; gap: 11px;
+  padding: 11px 14px; border-radius: 8px;
+  text-decoration: none; color: var(--text-muted);
+  font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; transition: all 0.2s;
+  border: 1px solid transparent;
+}
+.mob-nav-item:hover { background: rgba(184,115,42,0.06); color: var(--text-dark); }
+.mob-nav-item.active { background: rgba(184,115,42,0.10); color: var(--accent-deep); border-color: var(--border-lt); }
+.mob-nav-item svg { width: 15px; height: 15px; opacity: 0.7; flex-shrink: 0; }
+.mob-nav-item.active svg { opacity: 1; color: var(--accent); }
+
+.mob-socials {
+  display: flex; gap: 8px; padding-top: 20px;
+  border-top: 1px solid var(--border); margin-top: 12px;
+}
+.mob-soc-btn {
+  width: 36px; height: 36px;
+  background: var(--bg-card2);
+  border: 1px solid var(--border-lt);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; text-decoration: none; color: var(--text-subtle);
+  transition: all 0.2s;
+}
+.mob-soc-btn:hover { border-color: var(--accent); color: var(--accent); }
+.mob-soc-btn svg { width: 14px; height: 14px; }
+
+/* ══════════════════════════════════
+   NEON CANVAS (amber tones on light)
+══════════════════════════════════ */
+#neon-canvas {
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 1; opacity: 0.35;
+}
+
+/* ══════════════════════════════════
+   ANIMATIONS
+══════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.content-grid > * { animation: fadeUp 0.6s ease both; }
+.col-left   { animation-delay: 0.1s; }
+.col-center { animation-delay: 0.2s; }
+.col-right  { animation-delay: 0.3s; }
+
+/* ══════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════ */
+@media (max-width: 1100px) {
+  .content-grid { grid-template-columns: 1fr 1fr; }
+  .col-right {
+    grid-column: 1 / -1; padding: 28px 0 0;
+    border-top: 1px solid var(--border);
+    border-left: none;
+  }
+  .col-right .team-grid { grid-template-columns: repeat(4, 1fr); }
+  .bottom-strip { grid-template-columns: 1fr; }
+  .strip-visual { display: none; }
+  .strip-features { flex-wrap: wrap; border-left: none; border-top: 1px solid var(--border); padding-top: 20px; }
+  .strip-cta { text-align: left; padding: 20px 24px; }
+  .topbar-nav { display: none; }
+}
+
+@media (max-width: 860px) {
+  .topbar { display: none !important; }
+  .mob-topbar { display: flex !important; }
+  .main { padding-top: 58px; }
+  .hero { margin: 12px 12px 0; }
+  .hero-title { font-size: 56px; }
+  .content-grid { grid-template-columns: 1fr; padding: 24px 16px 0; }
+  .col-left, .col-center { border-right: none; padding-right: 0; padding-left: 0; border-bottom: 1px solid var(--border); padding-bottom: 28px; margin-bottom: 28px; }
+  .col-right { padding-left: 0; }
+  .site-footer { flex-direction: column; align-items: center; padding: 16px 20px; text-align: center; }
+}
+
+@media (max-width: 580px) {
+  .hero { height: auto; min-height: 280px; }
+  .hero-content { padding: 44px 20px 32px; }
+  .hero-title { font-size: 44px; }
+  .values-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr 1fr; }
+  .timeline-imgs { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NEON CANVAS -->
+<canvas id="neon-canvas"></canvas>
+
+<!-- ══════════════════════════
+     TOP NAVBAR
+══════════════════════════ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">
+    <img src="./assets/logo.jpeg" class="nav-logo-img" alt="Ameritore Homes"
+         onerror="this.style.display='none'">
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+      Home
+    </a></li>
+    <li><a href="about.html"  class="active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      About
+    </a></li>
+    <li><a href="projects.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
+      Projects
+    </a></li>
+    <li><a href="process.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 17l4-8 4 4 4-6 4 10"/><path d="M3 21h18"/></svg>
+      Process
+    </a></li>
+    <li><a href="career.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+      Careers
+    </a></li>
+    <li><a href="contact.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M9 5v14"/></svg>
+      Contact
+    </a></li>
+  </ul>
+
+  <div class="nav-right">
+    <a href="#" class="soc-btn" title="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a href="#" class="soc-btn" title="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="2" width="20" height="20" rx="4"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 014 0v4M11 10v7"/></svg>
+    </a>
+    <a href="#" class="soc-btn" title="YouTube">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="5" width="20" height="14" rx="4"/><polygon points="10 9 15 12 10 15" stroke="none" fill="currentColor"/></svg>
+    </a>
+    <div class="ham-btn" onclick="openMobNav()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ MAIN ══ -->
+<main class="main">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">About Us</p>
+      <h1 class="hero-title">
+        <span class="line1">Builders of</span>
+        <span class="line2">The Beyond</span>
+      </h1>
+      <p class="hero-sub">Crafting the Future of Luxury Living through Innovative Design,<br>Cutting-Edge Technology, and Sustainable Precision.</p>
+    </div>
+  </section>
+
+  <!-- CONTENT GRID -->
+  <div class="content-grid">
+
+    <!-- LEFT: Legacy -->
+    <div class="col-left">
+      <p class="section-label">Our Legacy of Innovation</p>
+      <p class="legacy-text">Ameritore was founded on a commitment to smart luxury, and a vision to transform homebuilding through intelligent design and precision engineering. From the very first blueprint, our mission has been to merge innovative architecture with cutting-edge technology — creating residences that don't just shelter, but inspire.<br><br>Every Ameritore home reflects decades of refinement, pushing boundaries to deliver spaces where comfort, security, and sustainability converge seamlessly for modern living.</p>
+
+      <div class="timeline-imgs">
+        <div class="timeline-item active">
+          <div class="timeline-img-wrap">
+            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=300&q=80" alt="Blueprint">
+          </div>
+          <div class="timeline-item-label">The First Blueprint</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-img-wrap">
+            <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=300&q=80" alt="Meeting">
+          </div>
+          <div class="timeline-item-label">Meeting the Challenge</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-img-wrap">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=300&q=80" alt="Vision">
+          </div>
+          <div class="timeline-item-label">The Vision Realized</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTER: Core Values -->
+    <div class="col-center">
+      <p class="section-label">Our Core Values</p>
+      <div class="values-grid">
+        <div class="value-card">
+          <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
+            <path d="M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/>
+          </svg>
+          <div class="value-title">Innovation &amp;<br>Technology</div>
+          <div class="value-desc">Leading with pioneering AI integration and smart systems.</div>
+        </div>
+        <div class="value-card">
+          <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+            <path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/>
+          </svg>
+          <div class="value-title">Sustainable<br>Precision</div>
+          <div class="value-desc">Building responsibility with eco-materials and efficiency.</div>
+        </div>
+        <div class="value-card">
+          <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+          </svg>
+          <div class="value-title">Client-Centric<br>Design</div>
+          <div class="value-desc">Forging homes that mirror individual lives and dreams.</div>
+        </div>
+        <div class="value-card">
+          <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          <div class="value-title">Unyielding<br>Quality</div>
+          <div class="value-desc">Uncompromising craftsmanship in every detail.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Team & Awards -->
+    <div class="col-right">
+      <p class="section-label">Meet the Founders</p>
+      <div class="team-grid">
+        <div class="team-card">
+          <img class="team-avatar" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=120&q=80" alt="Mr. P.V. Sabari">
+          <div class="team-name">Mr. P.V. Sabari<span><br>Director – Operations</span></div>
+          <span class="bio-btn">Bio</span>
+        </div>
+        <div class="team-card">
+          <img class="team-avatar" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=120&q=80" alt="Dr. P.V. Prabha">
+          <div class="team-name">Dr. P.V. Prabha<span><br>Director – Finance</span></div>
+          <span class="bio-btn">Bio</span>
+        </div>
+        <div class="team-card">
+          <img class="team-avatar" src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=120&q=80" alt="Mr. N. Krishna Kumar">
+          <div class="team-name">Mr. N. Krishna Kumar<span><br>Director – Technology</span></div>
+          <span class="bio-btn">Bio</span>
+        </div>
+      </div>
+
+      <div class="awards-label">Awards &amp; Recognition</div>
+      <div class="awards-row">
+        <div class="award-item">
+          <div class="award-badge">A+</div>
+          <div class="award-name">Architizer A+ Award for Futuristic Design</div>
+        </div>
+        <div class="award-item">
+          <div class="award-badge leed">
+            <span>LEED</span>
+            <span class="leed-sub">PLATINUM</span>
+          </div>
+          <div class="award-name">LEED Platinum Certification</div>
+        </div>
+        <div class="award-item">
+          <div class="award-badge leed">
+            <span>ISO</span>
+            <span class="leed-sub">9001:2015</span>
+          </div>
+          <div class="award-name">ISO Quality Management</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /content-grid -->
+
+  <!-- BOTTOM STRIP -->
+  <div class="bottom-strip">
+    <div class="strip-visual">
+      <img class="strip-visual-img"
+        src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80"
+        alt="Smart Home">
+    </div>
+
+    <div class="strip-body">
+      <div class="strip-label">Craftsmanship, Certified</div>
+      <p class="strip-desc">Our dedication to excellence is verified by leading industry certifications and satisfied clients worldwide.</p>
+    </div>
+
+    <div class="strip-features">
+      <div class="strip-feat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
+          <path d="M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/>
+        </svg>
+        AI-Powered<br>Automation
+      </div>
+      <div class="strip-feat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+        </svg>
+        Energy<br>Efficiency
+      </div>
+      <div class="strip-feat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        Advanced<br>Security
+      </div>
+      <div class="strip-feat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>
+        </svg>
+        Climate<br>Control
+      </div>
+    </div>
+
+    <div class="strip-cta">
+      <p class="strip-cta-title">Ready to Build<br>Your Legacy?</p>
+      <p class="strip-cta-sub">Let's Innovate Together</p>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <img src="./assets/logo.jpeg" alt="Ameritore" class="footer-logo-img"
+         onerror="this.style.display='none'">
+    <span class="footer-copy">
+      &copy; <strong>Ameritore Homes</strong> 2026. All rights reserved.
+    </span>
+  </div>
+  <div class="footer-center">
+    Designed &amp; Developed by&nbsp;<a href="#" target="_blank">Creative Advs</a>
+  </div>
+  <div class="footer-right">
+    <a href="#" class="footer-link">Terms</a>
+    <div class="footer-divider"></div>
+    <a href="#" class="footer-link">Privacy Policy</a>
+  </div>
+</footer>
+
+<!-- SCROLL TO TOP -->
+<button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="17" height="17">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+</button>
+
+<!-- MOBILE NAV OVERLAY -->
+<div id="mobile-nav">
+  <div class="mob-overlay" onclick="closeMobNav()"></div>
+  <div class="mob-panel">
+    <button class="mob-close" onclick="closeMobNav()">✕</button>
+    <a href="index.html" class="mob-logo">
+      <img src="./assets/logo.jpeg" style="width:34px;height:34px;border-radius:5px;object-fit:cover;" alt=""
+           onerror="this.style.display='none'">
+      <div class="mob-logo-text">
+        <span class="name">Ameritore</span>
+        <span class="sub">Homes</span>
+      </div>
+    </a>
+    <nav class="mob-nav">
+      <a href="index.html"    class="mob-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>Home</a>
+      <a href="about.html"    class="mob-nav-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>About Us</a>
+      <a href="projects.html" class="mob-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>Projects</a>
+      <a href="process.html"  class="mob-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 17l4-8 4 4 4-6 4 10"/><path d="M3 21h18"/></svg>Process</a>
+      <a href="career.html"   class="mob-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Careers</a>
+      <a href="contact.html"  class="mob-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M9 5v14"/></svg>Contact</a>
+    </nav>
+    <div class="mob-socials">
+      <a href="#" class="mob-soc-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
+      <a href="#" class="mob-soc-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="2" width="20" height="20" rx="4"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 014 0v4M11 10v7"/></svg></a>
+      <a href="#" class="mob-soc-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+      <a href="#" class="mob-soc-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="5" width="20" height="14" rx="4"/><polygon points="10 9 15 12 10 15" stroke="none" fill="currentColor"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ─── HERO PARALLAX ─── */
+window.addEventListener('scroll', () => {
+  const bg = document.querySelector('.hero-bg');
+  if (bg) bg.style.transform = `translateY(${window.scrollY * 0.2}px)`;
+}, { passive: true });
+
+/* ─── TIMELINE ACTIVE ─── */
+document.querySelectorAll('.timeline-item').forEach(item => {
+  item.addEventListener('click', () => {
+    document.querySelectorAll('.timeline-item').forEach(i => i.classList.remove('active'));
+    item.classList.add('active');
+  });
+});
+
+/* ─── SCROLL TO TOP ─── */
+(function(){
+  const btn = document.getElementById('scroll-top');
+  if (!btn) return;
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 260);
+  }, { passive: true });
+})();
+
+/* ─── MOBILE NAV ─── */
+function openMobNav() {
+  document.getElementById('mobile-nav').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMobNav() {
+  document.getElementById('mobile-nav').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobNav(); });
+
+/* ─── NEON CANVAS (light-mode amber streaks) ─── */
+(function () {
+  const canvas = document.getElementById('neon-canvas');
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const COLORS = [
+    'rgba(184,115,42,',
+    'rgba(210,140,60,',
+    'rgba(160,95,28,',
+    'rgba(230,165,70,',
+    'rgba(140,80,20,',
+  ];
+
+  function rand(a, b) { return a + Math.random() * (b - a); }
+
+  function createStreak() {
+    const W = canvas.width, H = canvas.height;
+    const horiz = Math.random() < 0.5;
+    return {
+      x0: horiz ? -80 : rand(W * 0.05, W * 0.95),
+      y0: horiz ? rand(H * 0.1, H * 0.9) : -60,
+      cx1: rand(W * 0.1, W * 0.5), cy1: rand(H * 0.05, H * 0.5),
+      cx2: rand(W * 0.45, W * 0.9), cy2: rand(H * 0.4, H * 0.95),
+      x1: horiz ? W + 80 : rand(W * 0.05, W * 0.95),
+      y1: horiz ? rand(H * 0.1, H * 0.9) : H + 60,
+      color: COLORS[Math.floor(Math.random() * COLORS.length)],
+      width: rand(0.5, 1.8), alpha: 0,
+      maxAlpha: rand(0.15, 0.38),
+      speed: rand(0.003, 0.008),
+      progress: 0, headLen: rand(0.09, 0.22),
+      phase: 'in', holdTime: rand(40, 110), holdCount: 0, glowLayers: 2,
+    };
+  }
+
+  const streaks = [];
+  for (let i = 0; i < 5; i++) {
+    const s = createStreak(); s.progress = Math.random(); s.alpha = s.maxAlpha * Math.random();
+    streaks.push(s);
+  }
+
+  function bezier(t, p0, p1, p2, p3) {
+    const u = 1 - t;
+    return u*u*u*p0 + 3*u*u*t*p1 + 3*u*t*t*p2 + t*t*t*p3;
+  }
+
+  function drawStreak(s) {
+    const t0 = Math.max(0, s.progress - s.headLen), t1 = Math.min(1, s.progress);
+    if (t0 >= t1) return;
+    const steps = 55;
+    ctx.save();
+    for (let layer = s.glowLayers; layer >= 1; layer--) {
+      ctx.beginPath();
+      for (let i = 0; i <= steps; i++) {
+        const t = t0 + (t1 - t0) * (i / steps);
+        const x = bezier(t, s.x0, s.cx1, s.cx2, s.x1);
+        const y = bezier(t, s.y0, s.cy1, s.cy2, s.y1);
+        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = s.color + (s.alpha * (layer === 1 ? 1 : 0.25 / layer)) + ')';
+      ctx.lineWidth = s.width * (layer === 1 ? 1 : layer * 1.8);
+      ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+      if (layer > 1) { ctx.shadowColor = s.color + '0.4)'; ctx.shadowBlur = 6 * layer; }
+      ctx.stroke(); ctx.shadowBlur = 0;
+    }
+    const tipX = bezier(t1, s.x0, s.cx1, s.cx2, s.x1);
+    const tipY = bezier(t1, s.y0, s.cy1, s.cy2, s.y1);
+    const g = ctx.createRadialGradient(tipX, tipY, 0, tipX, tipY, 5);
+    g.addColorStop(0, s.color + Math.min(s.alpha * 1.3, 0.5) + ')');
+    g.addColorStop(1, s.color + '0)');
+    ctx.beginPath(); ctx.arc(tipX, tipY, 5, 0, Math.PI * 2);
+    ctx.fillStyle = g; ctx.fill();
+    ctx.restore();
+  }
+
+  let spawnTimer = 0;
+  function tick() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    spawnTimer++;
+    if (spawnTimer > 60 && streaks.length < 10) { streaks.push(createStreak()); spawnTimer = 0; }
+    for (let i = streaks.length - 1; i >= 0; i--) {
+      const s = streaks[i];
+      if (s.phase === 'in') {
+        s.alpha += s.maxAlpha * 0.06; s.progress += s.speed;
+        if (s.alpha >= s.maxAlpha) s.alpha = s.maxAlpha;
+        if (s.progress >= 1) { s.progress = 1; s.phase = 'hold'; }
+      } else if (s.phase === 'hold') {
+        if (++s.holdCount >= s.holdTime) s.phase = 'out';
+      } else {
+        s.alpha -= s.maxAlpha * 0.04;
+        if (s.alpha <= 0) { streaks.splice(i, 1); continue; }
+      }
+      drawStreak(s);
+    }
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
+</script>
+</body>
+</html>
