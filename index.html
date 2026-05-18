@@ -53,41 +53,43 @@ body::before {
 ═══════════════════════════════ */
 .navbar {
   position: fixed; top: 0; left: 0; right: 0;
-  height: 72px;
-  background: rgba(250,247,242,0.92);
-  backdrop-filter: blur(16px);
+  height: 68px;
+  background: rgba(250,247,242,0.93);
+  backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--gold-border);
   display: flex; align-items: center;
   justify-content: space-between;
   padding: 0 40px;
   z-index: 200;
-  box-shadow: 0 2px 24px rgba(184,134,42,0.08);
+  box-shadow: 0 2px 28px rgba(184,134,42,0.09);
 }
 
-/* Logo */
-.nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
-.nav-logo:hover .nav-logo-img { filter: drop-shadow(0 0 14px rgba(184,134,42,0.55)); }
-.nav-logo-img { width: 86px; height: 56px; border-radius: 8px; object-fit: cover; filter: drop-shadow(0 0 8px rgba(184,134,42,0.32)); transition: filter 0.3s; }
+.nav-logo {
+  display: flex; align-items: center; gap: 11px;
+  text-decoration: none; flex-shrink: 0;
+}
+.nav-logo-img {
+  width: 86px; height: 56px;
+  border-radius: 7px; object-fit: cover;
+  filter: drop-shadow(0 0 6px rgba(184,134,42,0.28));
+}
 .nav-logo-text .name {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 16px; font-weight: 700;
-  letter-spacing: 2.5px; color: var(--ink);
-  display: block;
+  letter-spacing: 2.5px; color: var(--ink); display: block;
 }
 .nav-logo-text .sub {
   font-size: 8px; letter-spacing: 3.5px;
   color: var(--ink-muted); text-transform: uppercase; display: block;
 }
 
-/* Nav links */
 .nav-links {
-  display: flex; align-items: center; gap: 4px;
+  display: flex; align-items: center; gap: 3px;
   list-style: none;
 }
 .nav-links a {
   display: flex; align-items: center; gap: 6px;
-  padding: 8px 14px;
-  border-radius: 7px;
+  padding: 8px 13px; border-radius: 7px;
   text-decoration: none;
   font-size: 11px; font-weight: 600;
   letter-spacing: 1.5px; text-transform: uppercase;
@@ -96,22 +98,15 @@ body::before {
   border: 1px solid transparent;
 }
 .nav-links a svg { width: 13px; height: 13px; flex-shrink: 0; }
-.nav-links a:hover {
-  background: var(--gold-dim);
-  color: var(--gold);
-  border-color: var(--gold-border);
-}
+.nav-links a:hover { background: var(--gold-dim); color: var(--gold); border-color: var(--gold-border); }
 .nav-links a.active {
-  background: linear-gradient(135deg, rgba(184,134,42,0.18), rgba(212,169,74,0.1));
-  color: var(--gold);
-  border-color: var(--gold-border);
-  box-shadow: 0 0 12px rgba(184,134,42,0.12);
+  background: linear-gradient(135deg, rgba(184,134,42,0.16), rgba(212,169,74,0.09));
+  color: var(--gold); border-color: var(--gold-border);
+  box-shadow: 0 0 12px rgba(184,134,42,0.1);
 }
 
-/* Nav right: socials + hamburger */
-.nav-right {
-  display: flex; align-items: center; gap: 8px;
-}
+.nav-right { display: flex; align-items: center; gap: 7px; }
+
 .soc-btn {
   width: 34px; height: 34px;
   background: transparent;
@@ -123,75 +118,23 @@ body::before {
 }
 .soc-btn svg { width: 14px; height: 14px; }
 .soc-btn:hover {
-  border-color: var(--gold);
-  color: var(--gold);
+  border-color: var(--gold); color: var(--gold);
   background: var(--gold-dim);
   box-shadow: 0 0 10px var(--shadow-gold);
 }
 
 .ham-btn {
-  display: none;
-  width: 36px; height: 36px;
+  display: none; width: 36px; height: 36px;
   background: var(--gold-dim);
   border: 1px solid var(--gold-border);
   border-radius: 7px;
   align-items: center; justify-content: center;
-  cursor: pointer; color: var(--gold);
-  transition: all 0.2s;
+  cursor: pointer; color: var(--gold); transition: all 0.2s;
 }
-.ham-btn:hover { background: rgba(184,134,42,0.25); }
+.ham-btn:hover { background: rgba(184,134,42,0.24); }
 
 /* ═══════════════════════════════
-   MOBILE NAV OVERLAY
-═══════════════════════════════ */
-#mobile-nav { display: none; position: fixed; inset: 0; z-index: 999; }
-#mobile-nav.open { display: flex; }
-.mob-overlay { position: absolute; inset: 0; background: rgba(26,20,8,0.6); backdrop-filter: blur(6px); }
-.mob-panel {
-  position: absolute; top: 0; right: 0;
-  width: min(300px, 88vw); height: 100vh;
-  background: var(--cream);
-  border-left: 1px solid var(--gold-border);
-  box-shadow: -8px 0 40px rgba(184,134,42,0.15);
-  display: flex; flex-direction: column;
-  padding: 28px 22px 32px;
-  transform: translateX(100%);
-  transition: transform 0.35s cubic-bezier(0.34,1.12,0.64,1);
-}
-#mobile-nav.open .mob-panel { transform: translateX(0); }
-.mob-close {
-  align-self: flex-end; width: 32px; height: 32px;
-  background: var(--gold-dim); border: 1px solid var(--gold-border);
-  border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  cursor: pointer; color: var(--gold); font-size: 14px;
-  transition: all 0.2s; margin-bottom: 28px;
-}
-.mob-close:hover { background: rgba(184,134,42,0.3); }
-.mob-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 32px; }
-.mob-logo img { width: 36px; height: 36px; border-radius: 5px; object-fit: cover; }
-.mob-logo-text .name { font-family: 'Barlow Condensed',sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 2px; color: var(--ink); display: block; }
-.mob-logo-text .sub { font-size: 8px; letter-spacing: 3px; color: var(--ink-muted); }
-.mob-nav { flex: 1; display: flex; flex-direction: column; gap: 3px; }
-.mob-nav-item {
-  display: flex; align-items: center; gap: 12px;
-  padding: 11px 14px; border-radius: 8px;
-  text-decoration: none; color: var(--ink-soft);
-  font-size: 12px; font-weight: 600; letter-spacing: 1.5px;
-  text-transform: uppercase; transition: all 0.2s;
-  border: 1px solid transparent;
-}
-.mob-nav-item:hover { background: var(--gold-dim); color: var(--gold); border-color: var(--gold-border); }
-.mob-nav-item.active { background: var(--gold-dim); color: var(--gold); border-color: var(--gold-border); }
-.mob-nav-item svg { width: 15px; height: 15px; flex-shrink: 0; opacity: 0.7; }
-.mob-nav-item.active svg { opacity: 1; }
-.mob-socials { display: flex; gap: 8px; padding-top: 20px; border-top: 1px solid var(--gold-border); margin-top: 16px; }
-.mob-soc-btn { width: 36px; height: 36px; background: var(--gold-dim); border: 1px solid var(--gold-border); border-radius: 7px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--gold); transition: all 0.2s; }
-.mob-soc-btn:hover { background: rgba(184,134,42,0.3); }
-.mob-soc-btn svg { width: 15px; height: 15px; }
-
-
-/* ═══════════════════════════════
-   HERO
+   HERO SLIDER
 ═══════════════════════════════ */
 .hero {
   position: relative;
@@ -200,63 +143,95 @@ body::before {
   padding-top: 68px;
 }
 
-.hero-bg {
+/* ── SLIDER TRACK ── */
+.hero-slider {
+  position: absolute; inset: 0;
+  display: flex;
+  transition: none; /* JS handles transforms */
+}
+
+.hero-slide {
+  position: absolute; inset: 0;
+  opacity: 0;
+  transition: opacity 0.9s cubic-bezier(0.4,0,0.2,1);
+  pointer-events: none;
+}
+.hero-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Each slide's background image */
+.hero-slide-bg {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.04);
+  transition: transform 6s ease;
+  will-change: transform;
+}
+.hero-slide.active .hero-slide-bg {
+  transform: scale(1);
+}
+
+/* LEFT-ONLY cream gradient over each slide */
+.hero-slide-overlay {
   position: absolute; inset: 0;
   background:
+    /* left cream fade — stops at ~52% so right side stays clear */
     linear-gradient(to right,
-      rgba(250,247,242,0.96) 22%,
-      rgba(250,247,242,0.68) 50%,
-      rgba(250,247,242,0.15) 100%
+      rgba(250,247,242,0.97) 0%,
+      rgba(250,247,242,0.92) 28%,
+      rgba(250,247,242,0.60) 44%,
+      rgba(250,247,242,0.10) 55%,
+      transparent 65%
     ),
-    linear-gradient(to bottom,
-      rgba(250,247,242,0) 40%,
-      rgba(250,247,242,0.96) 100%
-    ),
-    url('./assets/background-1.png') center/cover no-repeat;
-  transition: transform 0.1s linear;
+    /* subtle bottom vignette so text stays readable */
+    linear-gradient(to top,
+      rgba(26,20,8,0.22) 0%,
+      transparent 30%
+    );
 }
 
-.hero::before {
-  content: '';
-  position: absolute; bottom: -60px; left: -40px;
-  width: 400px; height: 400px;
-  background: radial-gradient(ellipse, rgba(184,134,42,0.08) 0%, transparent 68%);
-  pointer-events: none; z-index: 1;
-  animation: ambientPulse 5s ease-in-out infinite alternate;
-}
-.hero::after {
-  content: '';
-  position: absolute; top: 80px; right: 80px;
-  width: 300px; height: 220px;
-  background: radial-gradient(ellipse, rgba(184,134,42,0.05) 0%, transparent 70%);
-  pointer-events: none; z-index: 1;
+/* ── SLIDE CONTENT (the text layer) ── */
+.hero-slide-content {
+  position: absolute; inset: 0;
+  display: flex; align-items: center;
+  padding: 0 56px;
+  pointer-events: none;
+  z-index: 3;
 }
 
-.hero-content {
-  position: relative; z-index: 2;
-  padding: 90px 0 0 56px;
-  max-width: 560px;
+.hero-slide-text {
+  max-width: 530px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease 0.3s, transform 0.7s ease 0.3s;
+}
+.hero-slide.active .hero-slide-text {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .hero-eyebrow {
   font-size: 11px; font-weight: 500; letter-spacing: 3px;
   color: var(--ink-muted); text-transform: uppercase;
-  margin-bottom: 22px;
+  margin-bottom: 18px;
   display: flex; align-items: center; gap: 10px;
-  animation: fadeUp 0.6s ease both;
 }
 .hero-eyebrow::before {
   content: '';
   width: 28px; height: 1px;
   background: var(--gold); opacity: 0.7;
+  flex-shrink: 0;
 }
 
 .hero-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 94px; font-weight: 700;
+  font-size: 88px; font-weight: 700;
   line-height: 0.92; letter-spacing: -1px;
-  margin-bottom: 26px;
-  animation: fadeUp 0.6s ease 0.1s both;
+  margin-bottom: 22px;
 }
 .hero-title .line1,
 .hero-title .line2 { display: block; color: var(--ink); }
@@ -268,10 +243,78 @@ body::before {
 }
 
 .hero-sub {
-  font-size: 15.5px; font-weight: 300; color: var(--ink-soft);
-  line-height: 1.7; margin-bottom: 38px; letter-spacing: 0.3px;
-  animation: fadeUp 0.6s ease 0.2s both;
+  font-size: 15px; font-weight: 300; color: var(--ink-soft);
+  line-height: 1.7; margin-bottom: 34px; letter-spacing: 0.3px;
 }
+
+/* ── SLIDER CONTROLS ── */
+.slider-controls {
+  position: absolute; bottom: 32px; left: 56px;
+  display: flex; align-items: center; gap: 16px;
+  z-index: 10;
+}
+
+.slider-dots {
+  display: flex; gap: 7px; align-items: center;
+}
+.slider-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: rgba(184,134,42,0.35);
+  border: none; cursor: pointer; padding: 0;
+  transition: all 0.35s;
+}
+.slider-dot.active {
+  width: 28px; border-radius: 4px;
+  background: var(--gold);
+  box-shadow: 0 0 10px rgba(184,134,42,0.5);
+}
+
+.slider-progress {
+  width: 90px; height: 2px;
+  background: rgba(184,134,42,0.2);
+  border-radius: 2px; overflow: hidden;
+}
+.slider-progress-bar {
+  height: 100%; width: 0%;
+  background: linear-gradient(to right, var(--gold), var(--gold-pale));
+  border-radius: 2px;
+  transition: width linear;
+}
+
+.slider-btn-group {
+  display: flex; gap: 6px; position: absolute; right: 56px; bottom: 32px; z-index: 10;
+}
+.slider-btn {
+  width: 38px; height: 38px;
+  border: 1px solid var(--gold-border);
+  border-radius: 50%; background: rgba(250,247,242,0.82);
+  backdrop-filter: blur(10px);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--gold); font-size: 16px;
+  transition: all 0.22s; box-shadow: 0 2px 12px rgba(184,134,42,0.15);
+  user-select: none;
+}
+.slider-btn:hover {
+  border-color: var(--gold);
+  background: var(--gold-dim);
+  box-shadow: 0 4px 18px rgba(184,134,42,0.28);
+  transform: scale(1.05);
+}
+
+/* Slide number counter */
+.slider-counter {
+  position: absolute; right: 160px; bottom: 40px;
+  z-index: 10;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 2px;
+  color: var(--ink-muted);
+}
+.slider-counter span { color: var(--gold); font-size: 18px; }
+
+/* keep the side card */
+.hero-bg { display: none; } /* legacy, not used anymore */
+
+
 
 .btn-primary {
   display: inline-flex; align-items: center; gap: 12px;
@@ -285,7 +328,6 @@ body::before {
   cursor: pointer; text-decoration: none;
   transition: all 0.25s;
   box-shadow: 0 6px 22px rgba(184,134,42,0.35);
-  animation: fadeUp 0.6s ease 0.3s both;
 }
 .btn-primary:hover {
   transform: translateY(-2px);
@@ -1162,7 +1204,7 @@ body::before {
   box-shadow: 0 -2px 14px rgba(184,134,42,0.06);
 }
 .footer-left { display: flex; align-items: center; gap: 10px; }
-.footer-logo-img { width: 66px; height: 32px; border-radius: 4px; object-fit: cover; opacity: 0.85; }
+.footer-logo-img {width: 66px; height: 32px; border-radius: 4px; object-fit: cover; opacity: 0.85; }
 .footer-copy { font-size: 11px; font-weight: 500; color: var(--ink-muted); letter-spacing: 0.4px; }
 .footer-copy strong { color: var(--ink-soft); font-weight: 600; }
 .footer-center { font-size: 10.5px; color: var(--ink-subtle); letter-spacing: 0.3px; text-align: center; }
@@ -1313,9 +1355,12 @@ body::before {
   .nav-links { display: none; }
   .ham-btn { display: flex; }
   .hero { height: auto; min-height: 560px; }
-  .hero-content { padding: 72px 24px 44px; }
+  .hero-slide-content { padding: 0 24px; align-items: flex-start; padding-top: 80px; }
   .hero-title { font-size: 58px; }
   .hero-side-card { display: none; }
+  .slider-controls { left: 24px; }
+  .slider-btn-group { right: 24px; }
+  .slider-counter { right: 130px; }
   .homes-section { grid-template-columns: 1fr; padding: 36px 24px; }
   .homes-grid { grid-template-columns: 1fr 1fr; }
   .homes-nav-btn { display: none; }
@@ -1343,8 +1388,10 @@ body::before {
 
 @media (max-width: 560px) {
   .navbar { padding: 0 16px; }
-  .hero-title { font-size: 46px; }
-  .hero-content { padding: 64px 20px 40px; }
+  .hero-title { font-size: 44px; }
+  .hero-slide-content { padding: 0 20px; padding-top: 72px; }
+  .slider-counter { display: none; }
+  .slider-btn-group { right: 16px; }
   .homes-grid { grid-template-columns: 1fr; }
   .tech-features { flex-direction: column; }
   .tech-feat { flex-direction: row; text-align: left; justify-content: flex-start; padding: 14px 18px; }
@@ -1371,7 +1418,7 @@ body::before {
   </a>
 
   <ul class="nav-links">
-    <li><a href="index.html"  class="active">
+    <li><a href="index.html" class="active">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
       Home
     </a></li>
@@ -1418,24 +1465,110 @@ body::before {
 ══════════════════════════ -->
 <main>
 
-  <!-- ─── HERO ─── -->
-  <section class="hero">
-    <div class="hero-bg" id="heroBg"></div>
+  <!-- ─── HERO SLIDER ─── -->
+  <section class="hero" id="heroSection">
 
-    <div class="hero-content">
-      <p class="hero-eyebrow">Welcome to Ameritore Homes</p>
-      <h1 class="hero-title">
-        <span class="line1">Building</span>
-        <span class="line2">Beyond</span>
-        <span class="line3">Tomorrow</span>
-      </h1>
-      <p class="hero-sub">Futuristic design. Intelligent living.<br>Timeless craftsmanship.</p>
-      <a href="projects.html" class="btn-primary">
-        Explore Our Homes
-        <span class="btn-arrow">›</span>
-      </a>
+    <!-- SLIDE 1 — Building Beyond Tomorrow -->
+    <div class="hero-slide active" data-index="0">
+      <div class="hero-slide-bg" style="background-image: url('./assets/background-1.png');"></div>
+      <div class="hero-slide-overlay"></div>
+      <div class="hero-slide-content">
+        <div class="hero-slide-text">
+          <p class="hero-eyebrow">Welcome to Ameritore Homes</p>
+          <h1 class="hero-title">
+            <span class="line1">Building</span>
+            <span class="line2">Beyond</span>
+            <span class="line3">Tomorrow</span>
+          </h1>
+          <p class="hero-sub">Futuristic design. Intelligent living.<br>Timeless craftsmanship.</p>
+          <a href="projects.html" class="btn-primary">
+            Explore Our Homes <span class="btn-arrow">›</span>
+          </a>
+        </div>
+      </div>
     </div>
 
+    <!-- SLIDE 2 — Devaraj Residence -->
+    <div class="hero-slide" data-index="1">
+      <div class="hero-slide-bg" style="background-image: url('assets/projects/ongoing/devraj/1.png'); background-position: center 30%;"></div>
+      <div class="hero-slide-overlay"></div>
+      <div class="hero-slide-content">
+        <div class="hero-slide-text">
+          <p class="hero-eyebrow">Ongoing · G+3 Residential</p>
+          <h1 class="hero-title">
+            <span class="line1">Devaraj</span>
+            <span class="line2">Residence</span>
+            <span class="line3">5,800 Sq Ft</span>
+          </h1>
+          <p class="hero-sub">A commanding G+3 home in LN Nagar,<br>where bold form meets refined living.</p>
+          <a href="projects.html" class="btn-primary">
+            View Project <span class="btn-arrow">›</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3 — Autograph Villas -->
+    <div class="hero-slide" data-index="2">
+      <div class="hero-slide-bg" style="background-image: url('assets/projects/completed/samridhi-unique-spaces/1.png');"></div>
+      <div class="hero-slide-overlay"></div>
+      <div class="hero-slide-content">
+        <div class="hero-slide-text">
+          <p class="hero-eyebrow">Completed · Luxury Villas</p>
+          <h1 class="hero-title">
+            <span class="line1">Autograph</span>
+            <span class="line2">Villas</span>
+            <span class="line3">12,992 Sq Ft</span>
+          </h1>
+          <p class="hero-sub">A cluster of G+1 luxury villas in Kalapatti —<br>every detail designed to impress.</p>
+          <a href="projects.html" class="btn-primary">
+            View Project <span class="btn-arrow">›</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4 — Sabari Residence -->
+    <div class="hero-slide" data-index="3">
+      <div class="hero-slide-bg" style="background-image: url('assets/projects/completed/sabari/1.png');"></div>
+      <div class="hero-slide-overlay"></div>
+      <div class="hero-slide-content">
+        <div class="hero-slide-text">
+          <p class="hero-eyebrow">Completed · Civil</p>
+          <h1 class="hero-title">
+            <span class="line1">Sabari</span>
+            <span class="line2">Residence</span>
+            <span class="line3">5,700 Sq Ft</span>
+          </h1>
+          <p class="hero-sub">A G+2 family home blending structural<br>precision with warm, enduring design.</p>
+          <a href="projects.html" class="btn-primary">
+            View Project <span class="btn-arrow">›</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 5 — Smart Living -->
+    <div class="hero-slide" data-index="4">
+      <div class="hero-slide-bg" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=85'); background-position: center;"></div>
+      <div class="hero-slide-overlay"></div>
+      <div class="hero-slide-content">
+        <div class="hero-slide-text">
+          <p class="hero-eyebrow">Smart Technology</p>
+          <h1 class="hero-title">
+            <span class="line1">Smarter</span>
+            <span class="line2">by</span>
+            <span class="line3">Design</span>
+          </h1>
+          <p class="hero-sub">AI automation, climate control & advanced<br>security — woven into every home we build.</p>
+          <a href="contact.html" class="btn-primary">
+            Start Your Journey <span class="btn-arrow">›</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating info card (stays across all slides) -->
     <div class="hero-side-card">
       <p class="side-card-title">The Ameritore Difference</p>
       <ul class="side-card-list">
@@ -1457,14 +1590,65 @@ body::before {
         </li>
       </ul>
       <div class="side-stat">
-        <span class="stat-number">20</span>
-        <span class="stat-plus">+</span>
-        <span class="stat-label">Years of<br>Excellence</span>
+        <span class="stat-number"></span>
+        <span class="stat-plus"></span>
+        <span class="stat-label"><br></span>
+      </div>
+    </div>
+
+    <!-- Bottom controls -->
+    <div class="slider-controls">
+      <div class="slider-dots" id="sliderDots">
+        <button class="slider-dot active" data-to="0"></button>
+        <button class="slider-dot" data-to="1"></button>
+        <button class="slider-dot" data-to="2"></button>
+        <button class="slider-dot" data-to="3"></button>
+        <button class="slider-dot" data-to="4"></button>
+      </div>
+      <div class="slider-progress">
+        <div class="slider-progress-bar" id="sliderBar"></div>
+      </div>
+    </div>
+
+    <div class="slider-counter">
+      <span id="sliderCurrent">01</span> / 05
+    </div>
+
+    <div class="slider-btn-group">
+      <button class="slider-btn" id="sliderPrev" title="Previous">&#8249;</button>
+      <button class="slider-btn" id="sliderNext" title="Next">&#8250;</button>
+    </div>
+
+  </section>
+
+  <!-- ─── STATS / YEARS OF EXCELLENCE ─── -->
+  <section class="stats-section">
+    <div class="stats-inner">
+      <div class="stat-item reveal">
+        <div class="stat-item-label">Years of Excellence</div>
+        <div class="stat-item-number"><span class="count-up" data-target="20">0</span><span class="stat-item-suffix">+</span></div>
+        <div class="stat-item-desc">Crafting exceptional homes since 2004</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="stat-item-label">Projects Completed</div>
+        <div class="stat-item-number"><span class="count-up" data-target="150">0</span><span class="stat-item-suffix">+</span></div>
+        <div class="stat-item-desc">From residences to luxury villa clusters</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-item-label">Square Feet Built</div>
+        <div class="stat-item-number"><span class="count-up" data-target="2">0</span><span class="stat-item-suffix">M+</span></div>
+        <div class="stat-item-desc">Of premium living space delivered</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item reveal reveal-delay-3">
+        <div class="stat-item-label">Happy Families</div>
+        <div class="stat-item-number"><span class="count-up" data-target="500">0</span><span class="stat-item-suffix">+</span></div>
+        <div class="stat-item-desc">Clients who call Ameritore home</div>
       </div>
     </div>
   </section>
-
-
 
   <!-- ─── HOMES COLLECTION ─── -->
   <section class="homes-section">
@@ -1701,7 +1885,8 @@ body::before {
     <div class="why-grid">
       <div class="why-visual reveal">
         <img class="why-visual-main"
-          src="https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=700&q=80"
+          src="assets/projects/completed/sabari/1.png"
+           onerror="this.src='https://images.unsplash.com/photo-1599809275671-b5942cabc7a2?w=700&q=80'"
           alt="Ameritore Craftsmanship">
         <div class="why-visual-badge">
           <div class="why-badge-val">20+</div>
@@ -1754,36 +1939,6 @@ body::before {
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-
-    <!-- ─── STATS / YEARS OF EXCELLENCE ─── -->
-  <section class="stats-section">
-    <div class="stats-inner">
-      <div class="stat-item reveal">
-        <div class="stat-item-label">Years of Excellence</div>
-        <div class="stat-item-number"><span class="count-up" data-target="20">0</span><span class="stat-item-suffix">+</span></div>
-        <div class="stat-item-desc">Crafting exceptional homes since 2004</div>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item reveal reveal-delay-1">
-        <div class="stat-item-label">Projects Completed</div>
-        <div class="stat-item-number"><span class="count-up" data-target="150">0</span><span class="stat-item-suffix">+</span></div>
-        <div class="stat-item-desc">From residences to luxury villa clusters</div>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item reveal reveal-delay-2">
-        <div class="stat-item-label">Square Feet Built</div>
-        <div class="stat-item-number"><span class="count-up" data-target="2">0</span><span class="stat-item-suffix">M+</span></div>
-        <div class="stat-item-desc">Of premium living space delivered</div>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item reveal reveal-delay-3">
-        <div class="stat-item-label">Happy Families</div>
-        <div class="stat-item-number"><span class="count-up" data-target="500">0</span><span class="stat-item-suffix">+</span></div>
-        <div class="stat-item-desc">Clients who call Ameritore home</div>
       </div>
     </div>
   </section>
@@ -1964,7 +2119,7 @@ body::before {
 <!-- ─── SITE FOOTER ─── -->
 <footer class="site-footer">
   <div class="footer-left">
-    <img src="./assets/favicon.png" alt="Ameritore" class="footer-logo-img" onerror="this.style.display='none'">
+    <img src="./assets/logo.jpeg" alt="Ameritore" class="footer-logo-img" onerror="this.style.display='none'">
     <span class="footer-copy">&copy; <strong>Ameritore Homes</strong> 2026. All rights reserved.</span>
   </div>
   <div class="footer-center">
@@ -1990,7 +2145,7 @@ body::before {
   <div class="mob-panel">
     <button class="mob-close" onclick="closeMobNav()">✕</button>
     <a href="index.html" class="mob-logo">
-      <img src="./assets/logo.jpeg" alt="Ameritore" onerror="this.style.display='none'">
+      <img src="./assets/favicon.png" alt="Ameritore" onerror="this.style.display='none'">
       <div class="mob-logo-text">
         <span class="name">Ameritore</span>
         <span class="sub">Homes</span>
@@ -2014,11 +2169,67 @@ body::before {
 </div>
 
 <script>
-/* ── Parallax ── */
-window.addEventListener('scroll', () => {
-  const bg = document.getElementById('heroBg');
-  if (bg) bg.style.transform = `translateY(${window.scrollY * 0.22}px)`;
-}, { passive: true });
+/* ── Hero Slider ── */
+(function(){
+  const SLIDE_DURATION = 5000; // ms per slide
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots   = document.querySelectorAll('.slider-dot');
+  const bar    = document.getElementById('sliderBar');
+  const counter= document.getElementById('sliderCurrent');
+  let current  = 0;
+  let autoTimer= null;
+  let barAnim  = null;
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+    counter.textContent = String(current + 1).padStart(2, '0');
+    startBar();
+  }
+
+  function startBar() {
+    if (bar) {
+      bar.style.transition = 'none';
+      bar.style.width = '0%';
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          bar.style.transition = `width ${SLIDE_DURATION}ms linear`;
+          bar.style.width = '100%';
+        });
+      });
+    }
+  }
+
+  function startAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => goTo(current + 1), SLIDE_DURATION);
+  }
+
+  // Dot clicks
+  dots.forEach(d => d.addEventListener('click', () => {
+    const to = parseInt(d.dataset.to);
+    goTo(to); startAuto();
+  }));
+
+  // Prev / Next
+  document.getElementById('sliderNext')?.addEventListener('click', () => { goTo(current + 1); startAuto(); });
+  document.getElementById('sliderPrev')?.addEventListener('click', () => { goTo(current - 1); startAuto(); });
+
+  // Touch / swipe support
+  let tx = 0;
+  const hero = document.getElementById('heroSection');
+  hero?.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+  hero?.addEventListener('touchend', e => {
+    const diff = tx - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) { goTo(diff > 0 ? current + 1 : current - 1); startAuto(); }
+  }, { passive: true });
+
+  startBar();
+  startAuto();
+})();
 
 /* ── Scroll to top ── */
 (function(){
