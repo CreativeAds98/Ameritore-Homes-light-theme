@@ -175,24 +175,23 @@ body::before {
 }
 
 /* LEFT-ONLY cream gradient over each slide */
-.hero-slide-overlay {
-  position: absolute; inset: 0;
+.hero-slide-overlay{
+  position:absolute;
+  inset:0;
   background:
-    /* left cream fade — stops at ~52% so right side stays clear */
     linear-gradient(to right,
-      rgba(250,247,242,0.97) 0%,
-      rgba(250,247,242,0.92) 28%,
-      rgba(250,247,242,0.60) 44%,
-      rgba(250,247,242,0.10) 55%,
-      transparent 65%
+      rgba(250,247,242,0.82) 0%,
+      rgba(250,247,242,0.68) 22%,
+      rgba(250,247,242,0.42) 38%,
+      rgba(250,247,242,0.16) 52%,
+      rgba(250,247,242,0.04) 65%,
+      transparent 75%
     ),
-    /* subtle bottom vignette so text stays readable */
     linear-gradient(to top,
-      rgba(26,20,8,0.22) 0%,
-      transparent 30%
+      rgba(26,20,8,0.12) 0%,
+      transparent 28%
     );
 }
-
 /* ── SLIDE CONTENT (the text layer) ── */
 .hero-slide-content {
   position: absolute; inset: 0;
@@ -1496,7 +1495,7 @@ body::before {
 
     <!-- SLIDE 2 — Devaraj Residence -->
     <div class="hero-slide" data-index="1">
-      <div class="hero-slide-bg" style="background-image: url('assets/projects/ongoing/devraj/1.png'); background-position: center 30%;"></div>
+      <div class="hero-slide-bg" style="background-image: url('assets/projects/ongoing/devraj/1.png'); background-position: center 20%;"></div>
       <div class="hero-slide-overlay"></div>
       <div class="hero-slide-content">
         <div class="hero-slide-text">
@@ -1534,7 +1533,7 @@ body::before {
 
     <!-- SLIDE 4 — Sabari Residence -->
     <div class="hero-slide" data-index="3">
-      <div class="hero-slide-bg" style="background-image: url('assets/projects/completed/sabari/1.png');"></div>
+      <div class="hero-slide-bg" style="background-image: url('assets/projects/completed/sabari/1.png'); background-position: center;"></div>
       <div class="hero-slide-overlay"></div>
       <div class="hero-slide-content">
         <div class="hero-slide-text">
@@ -1553,15 +1552,14 @@ body::before {
 
     <!-- SLIDE 5 — Smart Living -->
     <div class="hero-slide" data-index="4">
-      <div class="hero-slide-bg" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=85'); background-position: center;"></div>
+      <div class="hero-slide-bg" style="background-image: url('assets/projects/completed/samridhi-unique-spaces/1.png'); background-position: center;"></div>
       <div class="hero-slide-overlay"></div>
       <div class="hero-slide-content">
         <div class="hero-slide-text">
-          <p class="hero-eyebrow">Smart Technology</p>
+          <p class="hero-eyebrow">Completed · Civil</p>
           <h1 class="hero-title">
-            <span class="line1">Smarter</span>
-            <span class="line2">by</span>
-            <span class="line3">Design</span>
+            <span class="line1">Samridhi UniqueSpaces</span>
+            <span class="line2"></span>
           </h1>
           <p class="hero-sub">AI automation, climate control & advanced<br>security — woven into every home we build.</p>
           <a href="contact.html" class="btn-primary">
