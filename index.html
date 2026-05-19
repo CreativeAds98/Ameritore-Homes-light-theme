@@ -69,7 +69,7 @@ body::before {
   text-decoration: none; flex-shrink: 0;
 }
 .nav-logo-img {
-  width: 86px; height: 56px;
+  width: 86px; height: 60px;
   border-radius: 7px; object-fit: cover;
   filter: drop-shadow(0 0 6px rgba(184,134,42,0.28));
 }
@@ -513,11 +513,17 @@ body::before {
 }
 
 .stats-inner {
-  position: relative; z-index: 1;
+  position: relative;
+  z-index: 1;
+
   display: grid;
-  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
-  align-items: center;
-  gap: 0;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+
+  align-items: stretch;
+  justify-content: center;
+
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .stat-divider {
@@ -1275,7 +1281,7 @@ body::before {
 }
 .mob-close:hover { background: rgba(184,134,42,0.28); }
 .mob-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 30px; }
-.mob-logo img { width: 36px; height: 36px; border-radius: 5px; object-fit: cover; }
+.mob-logo img { width: 36px; height: 36x; border-radius: 5px; object-fit: cover; }
 .mob-logo-text .name { font-family: 'Barlow Condensed',sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 2px; color: var(--ink); display: block; }
 .mob-logo-text .sub { font-size: 8px; letter-spacing: 3px; color: var(--ink-muted); }
 .mob-nav { flex: 1; display: flex; flex-direction: column; gap: 3px; }
@@ -1413,7 +1419,7 @@ body::before {
 ══════════════════════════ -->
 <nav class="navbar">
   <a href="index.html" class="nav-logo">
-    <img src="./assets/logo.jpeg" class="nav-logo-img" alt="Ameritore Homes"
+    <img src="./assets/logo.png" class="nav-logo-img" alt="Ameritore Homes"
          onerror="this.style.display='none'">
   </a>
 
@@ -1623,25 +1629,25 @@ body::before {
     <div class="stats-inner">
       <div class="stat-item reveal">
         <div class="stat-item-label">Years of Excellence</div>
-        <div class="stat-item-number"><span class="count-up" data-target="0000">0</span><span class="stat-item-suffix">+</span></div>
-        <div class="stat-item-desc">Crafting exceptional homes since 0000</div>
+        <div class="stat-item-number"><span class="count-up" data-target="20">0</span><span class="stat-item-suffix">+</span></div>
+        <div class="stat-item-desc">Crafting exceptional homes since 2006</div>
       </div>
-      <div class="stat-divider"></div>
+      <!--<div class="stat-divider"></div>
       <div class="stat-item reveal reveal-delay-1">
         <div class="stat-item-label">Projects Completed</div>
         <div class="stat-item-number"><span class="count-up" data-target="0000">0</span><span class="stat-item-suffix">+</span></div>
         <div class="stat-item-desc">From residences to luxury villa clusters</div>
-      </div>
+      </div>-->
       <div class="stat-divider"></div>
       <div class="stat-item reveal reveal-delay-2">
         <div class="stat-item-label">Square Feet Built</div>
-        <div class="stat-item-number"><span class="count-up" data-target="000">0</span><span class="stat-item-suffix">M+</span></div>
+        <div class="stat-item-number"><span class="count-up" data-target="3">0</span><span class="stat-item-suffix">Lakh Sq.ft</span></div>
         <div class="stat-item-desc">Of premium living space delivered</div>
       </div>
       <div class="stat-divider"></div>
       <div class="stat-item reveal reveal-delay-3">
         <div class="stat-item-label">Happy Families</div>
-        <div class="stat-item-number"><span class="count-up" data-target="00000">0</span><span class="stat-item-suffix">+</span></div>
+        <div class="stat-item-number"><span class="count-up" data-target="20">0</span><span class="stat-item-suffix">+</span></div>
         <div class="stat-item-desc">Clients who call Ameritore home</div>
       </div>
     </div>
