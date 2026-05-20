@@ -253,7 +253,7 @@ body::before {
 .hero-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: 88px; font-weight: 700;
-  line-height: 0.92; letter-spacing: -1px;
+  line-height: 1.19; letter-spacing: -1px;
   margin-bottom: 24px;
   animation: fadeUp 0.5s ease 0.08s both;
 }
@@ -692,35 +692,25 @@ textarea.inp { resize: none; height: 120px; }
         </div>
 
         <!-- Map Panel -->
-        <div class="map-panel" id="mapPanel">
-          <div class="map-expand" id="mapExpandBtn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-          </div>
-          <svg class="world-map-svg" viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="dots" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
-                <circle cx="2" cy="2" r="1" fill="rgba(184,134,42,0.2)"/>
-              </pattern>
-            </defs>
-            <path d="M80,60 L180,55 L220,80 L230,130 L210,160 L190,180 L160,200 L130,210 L100,190 L70,150 L60,100 Z" fill="rgba(184,134,42,0.1)" stroke="rgba(184,134,42,0.15)" stroke-width="0.7"/>
-            <path d="M160,220 L200,215 L220,240 L225,290 L210,340 L185,360 L165,340 L150,300 L145,260 Z" fill="rgba(184,134,42,0.1)" stroke="rgba(184,134,42,0.15)" stroke-width="0.7"/>
-            <path d="M350,50 L410,45 L430,65 L420,90 L400,100 L370,95 L345,80 Z" fill="rgba(184,134,42,0.1)" stroke="rgba(184,134,42,0.15)" stroke-width="0.7"/>
-            <path d="M355,110 L410,105 L440,130 L445,180 L430,240 L400,270 L370,260 L348,220 L340,170 L342,130 Z" fill="rgba(184,134,42,0.1)" stroke="rgba(184,134,42,0.15)" stroke-width="0.7"/>
-            <path d="M430,40 L600,35 L650,60 L660,100 L640,140 L580,160 L510,155 L460,130 L430,100 Z" fill="rgba(184,134,42,0.1)" stroke="rgba(184,134,42,0.15)" stroke-width="0.7"/>
-            <path d="M590,220 L650,215 L680,240 L670,280 L640,290 L600,280 L580,255 Z" fill="rgba(184,134,42,0.1)" stroke="rgba(184,134,42,0.15)" stroke-width="0.7"/>
-            <rect width="800" height="380" fill="url(#dots)"/>
-            <circle cx="530" cy="145" r="5" fill="#b8862a" opacity="0.95"/>
-            <circle cx="530" cy="145" r="11" fill="none" stroke="#b8862a" stroke-width="1.2" opacity="0.5"/>
-            <circle cx="530" cy="145" r="18" fill="none" stroke="#b8862a" stroke-width="0.6" opacity="0.22"/>
-            <circle cx="372" cy="68" r="2" fill="#b8862a" opacity="0.25"/>
-            <circle cx="490" cy="115" r="2" fill="#b8862a" opacity="0.25"/>
-            <circle cx="95"  cy="120" r="2" fill="#b8862a" opacity="0.25"/>
-          </svg>
-          <div class="map-pin" style="left:62%;top:35%;">
-            <div class="map-pin-dot"></div>
-            <div class="map-pin-label">Coimbatore, India · 98431 30004</div>
-          </div>
-        </div>
+            <div class="map-panel" id="mapPanel">
+              
+              <div class="map-expand" id="mapExpandBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+                  <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+                </svg>
+              </div>
+
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.1869638643216!2d76.9921456!3d11.024595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8597a7fdb535b%3A0xce36bc3e6a134080!2sPlayworkz%20Coworking%20Space!5e0!3m2!1sen!2sin!4v1779252888829!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+
+            </div>
       </div>
 
       <!-- MIDDLE: Contact Us Today -->
@@ -751,16 +741,21 @@ textarea.inp { resize: none; height: 120px; }
         <div class="divider"></div>
 
         <p class="enquiry-title">Get in Touch</p>
-        <div class="contact-links">
-          <a href="tel:+919843130004" class="contact-link-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.8 19.79 19.79 0 01.99 3.18 2 2 0 013 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9a16 16 0 006.91 6.91l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            98431 30004
-          </a>
-          <a href="https://maps.google.com/?q=Playworkz+Coworking+Peelamedu+Coimbatore" target="_blank" class="contact-link-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
-            View on Google Maps
-          </a>
-        </div>
+          <div class="contact-links">
+            <a href="tel:+919843130004" class="contact-link-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.8 19.79 19.79 0 01.99 3.18 2 2 0 013 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9a16 16 0 006.91 6.91l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+              </svg>
+              +91 98431 30004
+            </a>
+
+            <a href="tel:+919597975676" class="contact-link-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.8 19.79 19.79 0 01.99 3.18 2 2 0 013 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9a16 16 0 006.91 6.91l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+              </svg>
+              +91 95979 75676
+            </a>
+          </div>
       </div>
 
       <!-- RIGHT: Inquiry Types -->
