@@ -113,38 +113,97 @@ body {
   box-shadow: 0 0 12px rgba(184,134,42,0.12);
 }
 
-/* Nav right: socials + hamburger */
+/* Base Layout */
 .nav-right {
-  display: flex; align-items: center; gap: 8px;
-}
-.soc-btn {
-  width: 34px; height: 34px;
-  background: transparent;
-  border: 1px solid var(--gold-border);
-  border-radius: 7px;
-  display: flex; align-items: center; justify-content: center;
-  text-decoration: none; color: var(--ink-muted);
-  transition: all 0.2s; cursor: pointer;
-}
-.soc-btn svg { width: 14px; height: 14px; }
-.soc-btn:hover {
-  border-color: var(--gold);
-  color: var(--gold);
-  background: var(--gold-dim);
-  box-shadow: 0 0 10px var(--shadow-gold);
+  display: flex; 
+  align-items: center; 
+  gap: 8px;
 }
 
-.ham-btn {
-  display: none;
-  width: 36px; height: 36px;
-  background: var(--gold-dim);
-  border: 1px solid var(--gold-border);
+/* Base Social Button Structure */
+.soc-btn {
+  width: 34px; 
+  height: 34px;
+  background: transparent;
   border-radius: 7px;
-  align-items: center; justify-content: center;
-  cursor: pointer; color: var(--gold);
+  border: 1px solid transparent; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  text-decoration: none; 
+  transition: all 0.2s ease-in-out; 
+  cursor: pointer;
+}
+
+/* Slightly larger SVG dimensions for filled icons */
+.soc-btn svg { 
+  width: 16px; 
+  height: 16px; 
+}
+
+/* --- EXACT BRAND COLORS (PERMANENT) --- */
+
+/* Facebook Official Blue: #1877F2 */
+.soc-btn.facebook {
+  border-color: #1877F2;
+  color: #1877F2;
+}
+.soc-btn.facebook:hover {
+  background: rgba(24, 119, 242, 0.1); 
+  box-shadow: 0 2px 8px rgba(24, 119, 242, 0.25);
+}
+
+/* Instagram Official Pink/Red: #E1306C */
+.soc-btn.instagram {
+  border-color: #E1306C;
+  color: #E1306C;
+}
+.soc-btn.instagram:hover {
+  background: rgba(225, 48, 108, 0.1); 
+  box-shadow: 0 2px 8px rgba(225, 48, 108, 0.25);
+}
+
+/* LinkedIn Official Blue: #0A66C2 */
+.soc-btn.linkedin {
+  border-color: #0A66C2;
+  color: #0A66C2;
+}
+.soc-btn.linkedin:hover {
+  background: rgba(10, 102, 194, 0.1); 
+  box-shadow: 0 2px 8px rgba(10, 102, 194, 0.25);
+}
+
+/* YouTube Official Red: #FF0000 */
+.soc-btn.youtube {
+  border-color: #FF0000;
+  color: #FF0000;
+}
+.soc-btn.youtube:hover {
+  background: rgba(255, 0, 0, 0.1); 
+  box-shadow: 0 2px 8px rgba(255, 0, 0, 0.25);
+}
+
+/* Hamburger Menu Button (Kept as standard stroke) */
+.ham-btn {
+  display: none; 
+  width: 36px; 
+  height: 36px;
+  background: transparent;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  align-items: center; 
+  justify-content: center;
+  cursor: pointer; 
+  color: #4b5563;
   transition: all 0.2s;
 }
-.ham-btn:hover { background: rgba(184,134,42,0.25); }
+
+.ham-btn:hover { 
+  background: #f3f4f6; 
+  border-color: #111827;
+  color: #111827;
+}
+
 
 /* ═══════════════════════════════
    MOBILE NAV OVERLAY
