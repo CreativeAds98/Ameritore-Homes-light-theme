@@ -64,23 +64,76 @@ body::before {
   box-shadow: 0 2px 28px rgba(184,134,42,0.09);
 }
 
-.nav-logo {
-  display: flex; align-items: center; gap: 11px;
-  text-decoration: none; flex-shrink: 0;
+/* LOGO */
+.nav-logo{
+  position: relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 10px 16px;
+  border-radius: 18px;
+   top: 17px; /* moves logo slightly down */
+  
+  /* Glass effect */
+  background: rgba(255,255,255,0.82);
+  backdrop-filter: blur(14px);
+
+  /* Premium shadow */
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.08),
+    0 0 0 1px rgba(212,175,55,0.18);
+
+  transition: all .35s ease;
+  overflow: hidden;
 }
-.nav-logo-img {
-  width: 86px; height: 60px;
-  border-radius: 7px; object-fit: cover;
-  filter: drop-shadow(0 0 6px rgba(184,134,42,0.28));
+
+/* Golden glow border */
+.nav-logo::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:18px;
+  padding:1.5px;
+  background: linear-gradient(
+    135deg,
+    rgba(212,175,55,0.85),
+    rgba(255,255,255,0.2),
+    rgba(212,175,55,0.7)
+  );
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
 }
-.nav-logo-text .name {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 16px; font-weight: 700;
-  letter-spacing: 2.5px; color: var(--ink); display: block;
+
+/* Hover */
+.nav-logo:hover{
+  transform: translateY(-3px) scale(1.03);
+  box-shadow:
+    0 16px 40px rgba(0,0,0,0.12),
+    0 0 25px rgba(212,175,55,0.25);
 }
-.nav-logo-text .sub {
-  font-size: 8px; letter-spacing: 3.5px;
-  color: var(--ink-muted); text-transform: uppercase; display: block;
+
+/* Image */
+.nav-logo-img{
+  width: 105px;
+  height: auto;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+
+  filter:
+    drop-shadow(0 4px 10px rgba(0,0,0,0.15))
+    drop-shadow(0 0 12px rgba(212,175,55,0.18));
+
+  transition: transform .35s ease;
+}
+
+.nav-logo:hover .nav-logo-img{
+  transform: scale(1.05);
 }
 
 .nav-links {
