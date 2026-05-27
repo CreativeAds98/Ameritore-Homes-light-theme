@@ -12,6 +12,7 @@
 :root {
   --bg:          #faf7f2;
   --bg-card:     #ffffff;
+   --cream:       #faf7f2;
   --bg-card2:    #f5f0e8;
   --bg-nav:      #fffdf9;
   --accent:      #b8732a;
@@ -808,6 +809,19 @@ body {
   .strip-features { flex-wrap: wrap; border-left: none; border-top: 1px solid var(--border); padding-top: 20px; }
   .strip-cta { text-align: left; padding: 20px 24px; }
 }
+
+
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .ham-btn { display: flex; }
+  .hero-title { font-size: 58px; }
+  .hero-text { padding: 56px 0 0 24px; }
+  .gold-rule { margin: 24px 24px 0; }
+  .content-grid { grid-template-columns: 1fr; padding: 20px 20px 0; }
+  .site-footer { padding: 16px 20px; flex-direction: column; align-items: center; text-align: center; }
+}
+
+
 @media (max-width: 860px) {
   .topbar { display: none !important; }
   .mob-topbar { display: flex !important; }
