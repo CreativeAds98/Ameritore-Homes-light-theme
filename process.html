@@ -65,19 +65,24 @@ body::before {
   box-shadow: 0 2px 24px rgba(184,134,42,0.08);
 }
 
-/* LOGO */
+
+/* =========================
+   LOGO - DESKTOP DEFAULT
+========================= */
 .nav-logo{
   position: relative;
   display:flex;
   align-items:center;
   justify-content:center;
+
   padding: 10px 16px;
   border-radius: 18px;
-   top: 17px; /* moves logo slightly down */
-  
+  top: 17px;
+
   /* Glass effect */
   background: rgba(255,255,255,0.82);
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 
   /* Premium shadow */
   box-shadow:
@@ -95,6 +100,7 @@ body::before {
   inset:0;
   border-radius:18px;
   padding:1.5px;
+
   background: linear-gradient(
     135deg,
     rgba(212,175,55,0.85),
@@ -113,6 +119,7 @@ body::before {
 /* Hover */
 .nav-logo:hover{
   transform: translateY(-3px) scale(1.03);
+
   box-shadow:
     0 16px 40px rgba(0,0,0,0.12),
     0 0 25px rgba(212,175,55,0.25);
@@ -123,6 +130,7 @@ body::before {
   width: 105px;
   height: auto;
   object-fit: contain;
+
   position: relative;
   z-index: 2;
 
@@ -135,6 +143,73 @@ body::before {
 
 .nav-logo:hover .nav-logo-img{
   transform: scale(1.05);
+}
+
+/* =========================
+   TABLET RESPONSIVE
+========================= */
+@media (max-width: 992px){
+
+  .nav-logo{
+    padding: 8px 14px;
+    border-radius: 15px;
+    top: 10px;
+  }
+
+  .nav-logo-img{
+    width: 88px;
+  }
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+@media (max-width: 768px){
+
+  .nav-logo{
+    padding: 7px 12px;
+    border-radius: 14px;
+    top: 6px;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    box-shadow:
+      0 6px 18px rgba(0,0,0,0.08),
+      0 0 0 1px rgba(212,175,55,0.16);
+  }
+
+  .nav-logo::before{
+    border-radius: 14px;
+  }
+
+  .nav-logo-img{
+    width: 72px;
+  }
+
+  .nav-logo:hover{
+    transform: translateY(-2px) scale(1.02);
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+@media (max-width: 480px){
+
+  .nav-logo{
+    padding: 6px 10px;
+    border-radius: 12px;
+    top: 4px;
+  }
+
+  .nav-logo::before{
+    border-radius: 12px;
+  }
+
+  .nav-logo-img{
+    width: 62px;
+  }
 }
 
 .nav-links {
