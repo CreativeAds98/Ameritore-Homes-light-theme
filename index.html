@@ -2146,7 +2146,7 @@ body::before {
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
         Explore Our Services
       </button>
-      <button class="popup-dismiss" id="popup-dismiss-btn">Dismiss — don't show again</button>
+      
     </div>
 
   </div>
@@ -3138,29 +3138,37 @@ document.querySelectorAll('.testi-dot').forEach((dot, i, dots) => {
 
 <script>
 (function () {
-  var STORAGE_KEY = 'ameritore_popup_seen';
-  var overlay     = document.getElementById('welcome-popup-overlay');
-  var closeX      = document.getElementById('popup-close-x');
-  var dismissBtn  = document.getElementById('popup-dismiss-btn');
-  var exploreBtn  = document.getElementById('popup-explore-btn');
+  var overlay    = document.getElementById('welcome-popup-overlay');
+  var closeX     = document.getElementById('popup-close-x');
+  var dismissBtn = document.getElementById('popup-dismiss-btn');
+  var exploreBtn = document.getElementById('popup-explore-btn');
 
   function closePopup() {
     overlay.classList.remove('popup-visible');
     document.body.style.overflow = '';
   }
 
-  if (!localStorage.getItem(STORAGE_KEY)) {
-    setTimeout(function () {
-      overlay.classList.add('popup-visible');
-      document.body.style.overflow = 'hidden';
-    }, 800);
-  }
+  /* Show on EVERY page load */
+  setTimeout(function () {
+    overlay.classList.add('popup-visible');
+    document.body.style.overflow = 'hidden';
+  }, 800);
 
-  closeX.addEventListener('click', function () { localStorage.setItem(STORAGE_KEY, '1'); closePopup(); });
-  dismissBtn.addEventListener('click', function () { localStorage.setItem(STORAGE_KEY, '1'); closePopup(); });
-  exploreBtn.addEventListener('click', function () { localStorage.setItem(STORAGE_KEY, '1'); closePopup(); });
-  overlay.addEventListener('click', function (e) { if (e.target === overlay) { localStorage.setItem(STORAGE_KEY, '1'); closePopup(); } });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { localStorage.setItem(STORAGE_KEY, '1'); closePopup(); } });
+  closeX.addEventListener('click', closePopup);
+  dismissBtn.addEventListener('click', closePopup);
+  exploreBtn.addEventListener('click', function () {
+    closePopup();
+    setTimeout(function () {
+      var target = document.getElementById('why') || document.getElementById('homes');
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 350);
+  });
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) closePopup();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closePopup();
+  });
 })();
 </script>
 </body>
