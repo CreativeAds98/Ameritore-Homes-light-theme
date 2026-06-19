@@ -805,9 +805,15 @@ body {
 <script>
 // ══════════════════════
 //  PROJECT DATA
+//  NOTE: Client names are not published on the website per company
+//  policy. Each project is keyed internally by a unique ID (id),
+//  while the display name (name) shown to visitors is a generic
+//  project type/series label. Duplicate display names are allowed
+//  and intentional (e.g. multiple "Individual Residence" entries).
 // ══════════════════════
 const PROJECT_DETAILS = {
-  'Mr. Devaraj Residence': {
+  'devraj': {
+    name: 'Multi Dwelling Residence',
     description: 'Ameritore Homes successfully initiated the construction of a G+3 residential building in LN Nagar, covering an area of 5,800 sq. ft. This project highlights our expertise in delivering robust and efficient housing solutions. The building is thoughtfully designed to provide a safe and comfortable living experience, adhering to the highest standards of construction excellence.',
     location: 'LN Nagar, Tamilnadu', architect: 'Ameritore Homes Design Team',
     style: 'Residential Building (G+3)', completion: 'In Progress', price: 'On Request', award: 'Quality Construction Standard',
@@ -815,7 +821,8 @@ const PROJECT_DETAILS = {
     features: ['G+3 Structure','5,800 Sq.ft','Robust Construction','Efficient Space Planning','Structural Integrity','Quality Finishes'],
     progress: 60
   },
-  'Villa 10 \u2013 OxygenVillas': {
+  'oxygenvilla10': {
+    name: 'The Oxygen Villas',
     description: 'Ameritore Homes successfully initiated a G+2 residential building in Kalapatti, spanning 5,807 sq. ft. This project showcases our expertise in designing and constructing modern living spaces that prioritize comfort, functionality, and sustainability.',
     location: 'Kalapatti, Tamilnadu', architect: 'Ameritore Homes Design Team',
     style: 'Residential Villa (G+2)', completion: 'In Progress', price: 'On Request', award: 'OxygenVillas Series',
@@ -823,7 +830,8 @@ const PROJECT_DETAILS = {
     features: ['G+2 Villa','5,807 Sq.ft','Modern Living Spaces','Sustainable Design','Comfort & Functionality','OxygenVillas Series'],
     progress: 60
   },
-  'Villa 5 \u2013 OxygenVillas': {
+  'oxygenvilla5': {
+    name: 'The Oxygen Villas',
     description: 'Ameritore Homes successfully initiated a G+2 residential building in Kalapatti, spanning 5,866 sq. ft. This project showcases our expertise in designing and constructing modern living spaces that prioritize comfort, functionality, and sustainability.',
     location: 'Kalapatti, Tamilnadu', architect: 'Ameritore Homes Design Team',
     style: 'Residential Villa (G+2)', completion: 'In Progress', price: 'On Request', award: 'OxygenVillas Series',
@@ -831,15 +839,17 @@ const PROJECT_DETAILS = {
     features: ['G+2 Villa','5,866 Sq.ft','Innovation in Design','Sustainability Focus','Premium Finishes','OxygenVillas Series'],
     progress: 45
   },
-  'Jagannathan Residence': {
-    description: 'Ameritore Homes successfully initiated the Jagannathan Residential Building, a 6,250 sq. ft. G+3 structure designed to provide modern and comfortable living spaces. The project is progressing with a strong focus on quality construction, efficient space planning, and structural integrity.',
+  'jagannathan': {
+    name: 'Multi Dwelling Residence',
+    description: 'Ameritore Homes successfully initiated this Residential Building project, a 6,250 sq. ft. G+3 structure designed to provide modern and comfortable living spaces. The project is progressing with a strong focus on quality construction, efficient space planning, and structural integrity.',
     location: 'Kaikolampalayam, Tamilnadu', architect: 'Ameritore Homes Design Team',
     style: 'Residential Building (G+3)', completion: 'In Progress', price: 'On Request', award: 'Quality Construction Standard',
     views: [{label:'Building Exterior',img:'assets/projects/ongoing/jagannathan/1.png'},{label:'Front Facade',img:''},{label:'Interior Layout',img:''},{label:'Living Space',img:''},{label:'Staircase',img:''},{label:'Site Progress',img:''}],
     features: ['G+3 Structure','6,250 Sq.ft','Modern Design','Efficient Space Planning','Structural Integrity','Contemporary Standards'],
     progress: 35
   },
-  'Samridhi UniqueSpaces \u2013 Autograph Villas': {
+  'samridhi': {
+    name: 'The Autograph Villas',
     description: 'Ameritore Homes proudly delivered a series of luxury G+1 residential villas in Kalapatti, spanning a total area of 12,992 sq. ft. These villas are a testament to our commitment to blending modern architecture with functionality and sustainability.',
     location: 'Kalapatti, Tamilnadu', architect: 'Ameritore Homes Design Team',
     style: 'Luxury Villas (G+1)', completion: 'In Progress', price: 'On Request', award: 'Autograph Villas Series',
@@ -847,7 +857,8 @@ const PROJECT_DETAILS = {
     features: ['G+1 Luxury Villas','12,992 Sq.ft Total','Modern Architecture','Sustainable Design','Privacy & Comfort','Client Satisfaction'],
     progress: 70
   },
-  'Mr. Sabari Residence': {
+  'sabari': {
+    name: 'Individual Residence',
     description: 'Ameritore Homes proudly presents a meticulously designed G+2 residential building, spanning 5,700 sq. ft. Located in Peelamedu, Tamil Nadu, this project blends modern architecture with functionality to create a comfortable living space.',
     location: 'Peelamedu, Tamilnadu', architect: 'Ameritore Homes Design Team',
     style: 'Residential Building (G+2)', completion: 'In Progress', price: 'On Request', award: 'Quality Residential Build',
@@ -855,39 +866,54 @@ const PROJECT_DETAILS = {
     features: ['G+2 Structure','5,700 Sq.ft','Modern Architecture','Quality Construction','Thoughtful Interiors','Harmonious Living'],
     progress: 90
   },
-  'Shyam Controls \u2013 Residential Building': {
-    description: "Ameritore Homes proudly presents the renovation of the SHYAM CONTROLS Residential Building in RS Puram, spanning 3,500 sq. ft. with a combination of civil and PEB (Pre-Engineered Building) construction. This project focuses on enhancing the existing structure by integrating modern design elements and improving functionality, all while preserving the building's original charm.",
+  'shyam': {
+    name: 'Individual Residence',
+    description: "Ameritore Homes proudly presents the renovation of a Residential Building in RS Puram, spanning 3,500 sq. ft. with a combination of civil and PEB (Pre-Engineered Building) construction. This project focuses on enhancing the existing structure by integrating modern design elements and improving functionality, all while preserving the building's original charm.",
     location: 'RS Puram, Coimbatore', architect: 'Ameritore Homes Design Team',
     style: 'Renovation \u2013 Civil + PEB', completion: 'In Progress', price: 'On Request', award: 'Renovation Excellence',
     views: [{label:'Building Front',img:'assets/projects/completed/shyam-controls/1.png'},{label:'After Renovation',img:''},{label:'PEB Structure',img:''},{label:'Interior Space',img:''},{label:'Exterior Detail',img:''},{label:'Final Handover',img:''}],
     features: ['3,500 Sq.ft','Civil + PEB Construction','Renovation Project','Modern Design Integration','Efficient Space Use','RS Puram, Coimbatore'],
     progress: 80
+  },
+  'senthilkumar': {
+    name: 'Individual Residence',
+    description: 'Ameritore Homes successfully initiated the construction of a G+1 residential building in Coimbatore, covering a total site area of 34,910 sq. ft. This project highlights our expertise in delivering thoughtfully planned homes with dedicated spaces for living, work, and leisure, including a mud house, office space, helper quarters, and an outdoor pool and dining area.',
+    location: 'Coimbatore, Tamilnadu', architect: 'Ameritore Homes Design Team',
+    style: 'Residential Building (G+1)', completion: 'In Progress', price: 'On Request', award: 'Quality Construction Standard',
+    views: [{label:'Front Elevation',img:'assets/projects/ongoing/senthilkumar/1.png'},{label:'Side View',img:''},{label:'Living Area',img:''},{label:'Mud House',img:''},{label:'Outdoor Pool',img:''},{label:'Construction Site',img:''}],
+    features: ['G+1 Structure','Site: 34,910 Sq.ft','House: 10,609 Sq.ft','Mud House: 782 Sq.ft','Office Space: 583 Sq.ft','Car Parking: 1,620 Sq.ft','Helper Quarters: 594 Sq.ft','Pool: 1,239 Sq.ft','Outdoor Dining: 640 Sq.ft'],
+    progress: 30
   }
 };
 
 // ── ALL PROJECTS in one merged array ──
+// "id" maps to PROJECT_DETAILS key (internal, never shown).
+// "name" is the public-facing label only (duplicates intentional).
 const ONGOING = [
-  { num:'A1', name:'Mr. Devaraj Residence', pct:'60', img:'assets/projects/ongoing/devraj/1.png',
+  { id:'devraj', num:'A1', name:'Multi Dwelling Residence', pct:'60', img:'assets/projects/ongoing/devraj/1.png',
     milestones:[{icon:'screen',label:'Foundation<br>Complete'},{icon:'house',label:'Structure<br>Ongoing'},{icon:'gear',label:'Finishing<br>Pending'}],
     specs:'G+3 | Residential | 5,800 Sq.ft' },
-  { num:'A2', name:'Villa 5 \u2013 OxygenVillas', pct:'45', img:'assets/projects/ongoing/ganesh/1.png',
+  { id:'oxygenvilla5', num:'A2', name:'The Oxygen Villas', pct:'45', img:'assets/projects/ongoing/ganesh/1.png',
     milestones:[{icon:'file',label:'Design<br>Approved'},{icon:'screen',label:'Foundation<br>Complete'},{icon:'shield',label:'Structure<br>Ongoing'}],
     specs:'G+2 | Villa | 5,866 Sq.ft' },
-  { num:'A3', name:'Jagannathan Residence', pct:'35', img:'assets/projects/ongoing/jagannathan/1.png',
+  { id:'jagannathan', num:'A3', name:'Multi Dwelling Residence', pct:'35', img:'assets/projects/ongoing/jagannathan/1.png',
     milestones:[{icon:'file',label:'Design<br>Approved'},{icon:'chart',label:'Site<br>Cleared'},{icon:'house',label:'Foundation<br>Ongoing'}],
     specs:'G+3 | Residential | 6,250 Sq.ft' },
-  { num:'A4', name:'Samridhi UniqueSpaces \u2013 Autograph Villas', pct:'70', img:'assets/projects/completed/samridhi-unique-spaces/1.png',
+  { id:'samridhi', num:'A4', name:'The Autograph Villas', pct:'70', img:'assets/projects/completed/samridhi-unique-spaces/1.png',
     milestones:[{icon:'screen',label:'Foundation<br>Complete'},{icon:'house',label:'Structure<br>Ongoing'},{icon:'gear',label:'Finishing<br>Pending'}],
     specs:'G+1 | Luxury Villas | 12,992 Sq.ft' },
-  { num:'A5', name:'Villa 10 \u2013 OxygenVillas', pct:'60', img:'assets/projects/completed/karnan/1.png',
+  { id:'oxygenvilla10', num:'A5', name:'The Oxygen Villas', pct:'60', img:'assets/projects/completed/karnan/1.png',
     milestones:[{icon:'file',label:'Design<br>Approved'},{icon:'screen',label:'Foundation<br>Complete'},{icon:'shield',label:'Structure<br>Ongoing'}],
     specs:'G+2 | Villa | 5,807 Sq.ft' },
-  { num:'A6', name:'Mr. Sabari Residence', pct:'90', img:'assets/projects/completed/sabari/1.png',
+  { id:'sabari', num:'A6', name:'Individual Residence', pct:'90', img:'assets/projects/completed/sabari/1.png',
     milestones:[{icon:'screen',label:'Structure<br>Complete'},{icon:'gear',label:'Finishing<br>Ongoing'},{icon:'house',label:'Handover<br>Soon'}],
     specs:'G+2 | Residential | 5,700 Sq.ft' },
-  { num:'A7', name:'Shyam Controls \u2013 Residential Building', pct:'80', img:'assets/projects/completed/shyam-controls/1.png',
+  { id:'shyam', num:'A7', name:'Individual Residence', pct:'80', img:'assets/projects/completed/shyam-controls/1.png',
     milestones:[{icon:'screen',label:'Structure<br>Complete'},{icon:'gear',label:'PEB<br>Ongoing'},{icon:'house',label:'Finishing<br>Pending'}],
-    specs:'Renovation | Civil+PEB | 3,500 Sq.ft' }
+    specs:'Renovation | Civil+PEB | 3,500 Sq.ft' },
+  { id:'senthilkumar', num:'A8', name:'Individual Residence', pct:'30', img:'assets/projects/ongoing/senthilkumar/1.png',
+    milestones:[{icon:'file',label:'Design<br>Approved'},{icon:'chart',label:'Site<br>Cleared'},{icon:'house',label:'Foundation<br>Ongoing'}],
+    specs:'G+1 | Residential | 34,910 Sq.ft' }
 ];
 
 const ICONS = {
@@ -903,7 +929,8 @@ const ICONS = {
 let _cardData = [];
 
 function buildCard(p, idx) {
-  const isDone = String(p.num).startsWith('A') && (PROJECT_DETAILS[p.name] && PROJECT_DETAILS[p.name].progress === 100);
+  const d = PROJECT_DETAILS[p.id];
+  const isDone = d && d.progress === 100;
   const statusHtml = isDone
     ? `<div class="card-status completed-status">COMPLETED</div>`
     : `<div class="card-status">ONGOING <span class="pct">(${p.pct}% Complete)</span></div>`;
@@ -928,14 +955,14 @@ function buildCard(p, idx) {
 
 function openPopupByIndex(idx) {
   const p = _cardData[idx];
-  if (p) openPopup(p.name);
+  if (p) openPopup(p.id);
 }
 
 let popupViewIndex = 0;
 
-function openPopup(name) {
-  const d = PROJECT_DETAILS[name];
-  if (!d) { console.warn('No data for:', JSON.stringify(name)); return; }
+function openPopup(id) {
+  const d = PROJECT_DETAILS[id];
+  if (!d) { console.warn('No data for id:', JSON.stringify(id)); return; }
   popupViewIndex = 0;
   const isCompleted = d.progress === 100;
   const statusClass = isCompleted ? 'pop-status-done' : 'pop-status-ongoing';
@@ -971,7 +998,7 @@ function openPopup(name) {
       </div>
       <div class="pop-right">
         <div class="pop-eyebrow">Ameritore Homes</div>
-        <h2 class="pop-title">${name}</h2>
+        <h2 class="pop-title">${d.name}</h2>
         <div class="pop-status ${statusClass}">${statusText}</div>
         <p class="pop-desc">${d.description}</p>
         ${progressBar}
@@ -996,7 +1023,7 @@ function openPopup(name) {
   requestAnimationFrame(() => popup.classList.add('visible'));
   document.body.style.overflow = 'hidden';
   popup._views = validViews;
-  popup._name  = name;
+  popup._id    = id;
 }
 
 function closePopup() {
