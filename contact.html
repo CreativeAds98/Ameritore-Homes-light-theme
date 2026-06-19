@@ -873,29 +873,80 @@ textarea.inp { resize: none; height: 120px; }
 
       <!-- LEFT: Form + Map -->
       <div>
-        <div class="form-panel">
-          <div class="form-section-label">Send Us a Message</div>
-          <div class="form-row">
-            <input class="inp" type="text" placeholder="Full Name">
-          </div>
-          <div class="form-row">
-            <input class="inp" type="text" placeholder="Company Name">
-          </div>
-          <div class="form-row-split">
-            <input class="inp" type="email" placeholder="Email Address">
-            <input class="inp" type="tel" placeholder="Phone Number">
-          </div>
-          <div class="form-row">
-            <textarea class="inp" placeholder="Your Message"></textarea>
-          </div>
-          <div class="form-footer">
-            <button class="submit-btn" id="submitBtn">Submit Enquiry</button>
-            <label class="pref-check">
-              <input type="checkbox">
-              Preferred: Email / Phone
-            </label>
-          </div>
-        </div>
+        <!-- Web3forms used for trasnfering datas -->
+          <form
+            action="https://api.web3forms.com/submit"
+            method="POST"
+            class="form-panel"
+          >
+
+            <!-- Web3Forms Access Key -->
+            <input type="hidden" name="access_key" value="82ddfa77-cc30-4b61-8cb5-2e5a3ede8950">
+
+            <!-- Email Subject -->
+            <input type="hidden" name="subject" value="New Contact Enquiry - Ameritore Homes">
+
+            <div class="form-section-label">Send Us a Message</div>
+
+            <div class="form-row">
+              <input
+                class="inp"
+                type="text"
+                name="name"
+                placeholder="Full Name"
+                required>
+            </div>
+
+            <div class="form-row">
+              <input
+                class="inp"
+                type="text"
+                name="company"
+                placeholder="Company Name">
+            </div>
+
+            <div class="form-row-split">
+              <input
+                class="inp"
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                required>
+
+              <input
+                class="inp"
+                type="tel"
+                name="phone"
+                placeholder="Phone Number"
+                required>
+            </div>
+
+            <div class="form-row">
+              <textarea
+                class="inp"
+                name="message"
+                placeholder="Your Message"
+                required></textarea>
+            </div>
+
+            <div class="form-footer">
+              <button
+                type="submit"
+                class="submit-btn"
+                id="sub">
+                Submit Enquiry
+              </button>
+
+              <label class="pref-check">
+                <input
+                  type="checkbox"
+                  name="preferred_contact"
+                  value="Yes">
+                Preferred: Email / Phone
+              </label>
+            </div>
+
+          </form>
 
         <!-- Map Panel -->
             <div class="map-panel" id="mapPanel">
